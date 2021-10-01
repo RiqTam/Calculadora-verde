@@ -8,11 +8,18 @@ module.exports = {
       }
     },
     colors:{
-      black: '#4A4A4A'
+      black: '#4A4A4A',
+      gray: '#B0B0B0',
+      green:{
+        DEFAULT:'#70C900',
+        dark: '#188216'
+      }
     }
   },
   variants: {
-    extend: {},
+    extend: {
+      borderWidth: ['focus']
+    },
   },
   plugins: [],
 };
