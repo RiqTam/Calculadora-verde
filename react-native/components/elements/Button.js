@@ -1,7 +1,8 @@
-import React from 'react'
-import tailwind from 'tailwind-rn'
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native'
+import React from 'react';
+import tw from '../../tailwind';
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import TextMontserrat from './TextMontserrat';
 
 export default function Button() {
 	return (
@@ -9,10 +10,10 @@ export default function Button() {
 			<LinearGradient colors={['#188216',  '#70C900']} 
 							end={[1,0]}
 							start={[0,1]}
-							style={tailwind("p-5 rounded-full w-40")}>
-				<Text style={tailwind("text-white text-center")}>
+							style={tw`p-5 rounded-full w-40 h-15 flex`}>
+				<TextMontserrat style={tw`text-white text-center m-auto`}>
 					Get Started
-				</Text>
+				</TextMontserrat>
 			</LinearGradient>
 		</View>
 	)

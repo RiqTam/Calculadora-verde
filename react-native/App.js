@@ -1,14 +1,16 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
+import tw from './tailwind';
 import { StyleSheet, Text, View } from 'react-native';
-import tailwind from 'tailwind-rn';
-import Button from './components/elements/Button';
+import Landpage from './components/views/Landpage';
+import ElementsList from './components/views/ElementsList';
+
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text style={tailwind('text-black font-bold text-xl')}>Basic Elements</Text>
-      <Button />
+    <View style={tw`pt-10`}>
+      <ElementsList />
+
       <StatusBar style="auto" />
     </View>
   );
