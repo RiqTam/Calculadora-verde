@@ -2,7 +2,6 @@ import React from 'react'
 import { View, Text } from 'react-native'
 import Button from '../elements/Button';
 import Title from '../elements/Title';
-import TextMontserrat from '../elements/TextMontserrat';
 import tw from '../../tailwind';
 import Input from '../elements/Input';
 
@@ -10,9 +9,9 @@ export default function ElementsList() {
 	return (
 		<View style={tw`items-center`}>
 			<Title fontSize={35}>Basic Elements</Title>
-			<TextMontserrat style={tw`px-10 py-5 text-black`}>
+			<Text style={tw`px-10 py-5`}>
 				Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard 
-			</TextMontserrat>
+			</Text>
 			<Button />
 			<Input />
 		</View>

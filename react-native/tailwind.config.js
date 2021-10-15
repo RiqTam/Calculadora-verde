@@ -7,7 +7,6 @@ module.exports = {
         black: '#4A4A4A'
       }
     },
-
   },
   variants: {
     extend: {},
