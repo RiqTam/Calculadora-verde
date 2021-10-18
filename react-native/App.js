@@ -1,8 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import Landpage from './components/views/Landpage';
-import ElementsList from './components/views/ElementsList';
+import Landpage from './screens/Landpage';
+import ElementsList from './screens/ElementsList';
 import tw from './tailwind';
 import { setCustomText } from 'react-native-global-props';
 import {useFonts} from 'expo-font';

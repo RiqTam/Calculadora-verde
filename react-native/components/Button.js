@@ -1,11 +1,11 @@
 import React from 'react';
-import tw from '../../tailwind';
-import {  View, Text} from 'react-native';
+import tw from '../tailwind';
+import {  View, Text,  TouchableHighlight, TouchableOpacity} from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
-export default function Button() {
+export default function Button(props) {
 	return (
-		<View>
+		<TouchableOpacity activeOpacity={0.6} onPress={props.onPress} style={props.style}>
 			<LinearGradient colors={['#188216',  '#70C900']} 
 							end={[1,0]}
 							start={[0,1]}
@@ -14,7 +14,7 @@ export default function Button() {
 					Get Started
 				</Text>
 			</LinearGradient>
-		</View>
+		</TouchableOpacity>
 	)
 }
 

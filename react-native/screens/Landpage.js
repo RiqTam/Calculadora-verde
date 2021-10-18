@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
-import Title from '../elements/Title';
-import tw from '../../tailwind';
+import Title from '../components/Title';
+import tw from '../tailwind';
 
 export default function Landpage() {
 	return (

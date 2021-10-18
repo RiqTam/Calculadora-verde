@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text } from 'react-native'
-import tw from '../../tailwind';
+import tw from '../tailwind';
 
 export default function Title(props) {
 
