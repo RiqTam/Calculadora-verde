@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text } from 'react-native'
 import tw from '../tailwind';
-import { Button, Checkbox, H1, Input, Title  } from '../components';
+import { Button, Checkbox, H1, Input, Span, Title  } from '../components';
 
 export default function ElementsList() {
 	return (
@@ -14,6 +14,7 @@ export default function ElementsList() {
 			<Button onPress={()=>console.log("hi")} style={tw`m-3`}/>
 			<View style={tw`m-3`}>
 				<Input label="Email" placeholder="Ingresa tu Email"/>
+				<Span>Olvidaste la contraseña?</Span>
 			</View>
 			<Checkbox />
 		</View>
