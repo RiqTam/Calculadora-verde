@@ -6,6 +6,7 @@ import ElementsList from './screens/ElementsList';
 import tw from './tailwind';
 import { setCustomText } from 'react-native-global-props';
 import {useFonts} from 'expo-font';
+import Login from './screens/Login';
 
 export default function App() {
 	let [fontsLoaded] = useFonts({
@@ -28,7 +29,7 @@ export default function App() {
 
   return (
     <View style={tw`pt-10`}>
-      <ElementsList />
+      <Login />
       <StatusBar style="auto" />
     </View>
   );

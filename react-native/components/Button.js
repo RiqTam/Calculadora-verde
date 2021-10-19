@@ -9,9 +9,9 @@ export default function Button(props) {
 			<LinearGradient colors={['#188216',  '#70C900']} 
 							end={[1,0]}
 							start={[0,1]}
-							style={tw`p-5 rounded-full w-40 h-15 flex`}>
+							style={tw`p-5 rounded-full w-full h-15 flex`}>
 				<Text style={tw`text-white text-center m-auto`}>
-					Get Started
+					{props.label}
 				</Text>
 			</LinearGradient>
 		</TouchableOpacity>

@@ -7,7 +7,7 @@ export default function Input(props) {
 	return (
 		<View>
 			<Text style={tw.style(`text-black pb-3`,{ fontFamily: 'MontserratBold'})}>{props.label}</Text>
-			<TextInput style={tw.style(`h-15 border-2 ${borderColor} w-60 rounded-full px-5 `,
+			<TextInput style={tw.style(`h-15 border-2 ${borderColor} w-full rounded-full px-5 `,
 						{ fontFamily: 'Montserrat', fontSize: 18 , ...props.style})} 
 						onBlur={()=>setBorderColor('border-gray-500')}
 						onFocus={()=>setBorderColor('border-green-light')}
