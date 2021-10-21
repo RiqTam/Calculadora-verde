@@ -1,8 +1,7 @@
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import React, { useState } from 'react'
 import { View, Text } from 'react-native'
 import tw from '../tailwind'
+import { MaterialIcons } from '@expo/vector-icons';
 
 export default function Checkbox() {
 	const [checked, setChecked] = useState(true);
@@ -10,7 +9,8 @@ export default function Checkbox() {
 		return (
 			<View style={tw`w-7 h-7 bg-green-light rounded-md flex`} 
 					onTouchStart={()=>setChecked(false)}>
-				<FontAwesomeIcon icon={faCheck} style={tw`m-auto text-white`}/>
+				<MaterialIcons name="check" style={tw`m-auto text-white text-center`} size={25}/>
+				
 			</View>
 		)		
 	} else {

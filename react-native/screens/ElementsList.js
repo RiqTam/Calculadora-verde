@@ -11,7 +11,7 @@ export default function ElementsList() {
 			<Text style={tw`px-10 py-3`}>
 				Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard 
 			</Text>
-			<Button onPress={()=>console.log("hi")} style={tw`m-3`}/>
+			<Button onPress={()=>console.log("hi")} style={tw`m-3`} label="button"/>
 			<View style={tw`m-3`}>
 				<Input label="Email" placeholder="Ingresa tu Email"/>
 				<Span>Olvidaste la contraseña?</Span>
