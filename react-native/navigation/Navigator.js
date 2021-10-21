@@ -11,7 +11,7 @@ export default function Navigator() {
   return (
     <NavigationContainer>
       <Tab.Navigator
-        initialRouteName="Home"
+        initialRouteName="New Data"
         screenOptions={({route})=>({tabBarIcon: (props)=>{
 			const icons={
 				"New Data": "add-box",
@@ -24,9 +24,9 @@ export default function Navigator() {
 			)
 		}, headerShown: false, tabBarActiveTintColor: "#188216", tabBarInactiveTintColor: "#000"})}
       >
+        <Tab.Screen name="Fingerprint" component={ElementsList} />
         <Tab.Screen name="New Data" component={Landpage}/>
         <Tab.Screen name="Tips" component={ElementsList} />
-        <Tab.Screen name="Fingerprint" component={ElementsList} />
         <Tab.Screen name="Settings" component={ElementsList} />
       </Tab.Navigator>
     </NavigationContainer>
