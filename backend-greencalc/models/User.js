@@ -6,11 +6,11 @@ const userSchema = new mongoose.Schema({
 				required: true,
 				min: 6
 		},
-		email: {
-				type: String,
+		phone: {
+				type: Number,
 				required: true,
-				max:255,
-				min:6
+				max:9999999999999,
+				min:10000000
 		},
 		password:{
 				type: String,

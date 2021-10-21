@@ -9,9 +9,9 @@ router.post("/register", async (req, res) => {
   if (error) {
     return res.status(400).send(error.details[0].message);
   }
-  const emailExist = await User.findOne({ email: req.body.email });
-  if (emailExist) {
-    return res.status(400).send("Email already taken");
+  const phoneExist = await User.findOne({ phone: req.body.phone });
+  if (phoneExist) {
+    return res.status(400).send("Phone already taken");
   }
 
   const salt = await bcrypt.genSalt(10);
@@ -19,7 +19,7 @@ router.post("/register", async (req, res) => {
 
   const user = new User({
     name: req.body.name,
-    email: req.body.email,
+    phone: req.body.phone,
     password: hashedPassword,
   });
   try {
@@ -35,13 +35,13 @@ router.post("/login", async (req, res) => {
   if (error) {
     return res.status(400).send(error.details[0].message);
   }
-  const user = await User.findOne({ email: req.body.email });
+  const user = await User.findOne({ phone: req.body.phone });
   if (!user) {
-    return res.status(400).send("Email or password is wrong");
+    return res.status(400).send("Phone or password is wrong");
   }
   const validPass = await bcrypt.compare(req.body.password, user.password);
   if (!validPass) {
-    return res.status(400).send("Email or password is wrong");
+    return res.status(400).send("Phone or password is wrong");
   }
   const token = jwt.sign({_id: user.id}, process.env.TOKEN_SECRET);
   res.header('auth-token',token).send(token);
