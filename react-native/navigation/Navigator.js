@@ -4,6 +4,9 @@ import Landpage from "../screens/Landpage";
 import ElementsList from "../screens/ElementsList";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialIcons } from '@expo/vector-icons';
+import AddData from "../screens/AddData";
+import Tips from "../screens/Tips";
+import Settings from "../screens/Settings";
 
 const Tab = createBottomTabNavigator();
 
@@ -11,10 +14,10 @@ export default function Navigator() {
   return (
     <NavigationContainer>
       <Tab.Navigator
-        initialRouteName="New Data"
+        initialRouteName="Add Data"
         screenOptions={({route})=>({tabBarIcon: (props)=>{
 			const icons={
-				"New Data": "add-box",
+				"Add Data": "add-box",
 				Tips: "list",
 				Fingerprint: "fingerprint",
 				Settings: "settings"
@@ -25,9 +28,10 @@ export default function Navigator() {
 		}, headerShown: false, tabBarActiveTintColor: "#188216", tabBarInactiveTintColor: "#000"})}
       >
         <Tab.Screen name="Fingerprint" component={ElementsList} />
-        <Tab.Screen name="New Data" component={Landpage}/>
-        <Tab.Screen name="Tips" component={ElementsList} />
-        <Tab.Screen name="Settings" component={ElementsList} />
+        <Tab.Screen name="Add Data" component={AddData}/>
+        <Tab.Screen name="Tips" component={Tips} />
+        <Tab.Screen name="Settings" component={Settings} />
+        <Tab.Screen name="UI" component={ElementsList} />
       </Tab.Navigator>
     </NavigationContainer>
   );
