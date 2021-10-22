@@ -11,7 +11,7 @@ export default function AddData() {
 				<Span style={tw`text-left text-lg`}>By Dinohacks</Span>
 			</View>
 			<ScrollView style={tw`px-3`}>
-				<H1 style={tw`text-green-medium mb-8 mt-3`}>Ayudanos a medir tu influencia en el medio ambiente...</H1>
+				<H1 style={tw`text-green-dark mb-8 mt-3`}>Ayudanos a medir tu influencia en el medio ambiente...</H1>
 				<Text style={tw.style(`text-black mb-5`, {fontFamily: 'MontserratBold'})}>Necesitamos un poco de información sobre los gastos de tu empresa</Text>
 
 				<Input label="Gasto bimestral de luz" placeholder="Pesos Mexicanos"/>
