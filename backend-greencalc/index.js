@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const authRoute = require('./routes/auth');
 const postRoute = require('./routes/posts')
-
+    
 
 
 dotenv.config()
