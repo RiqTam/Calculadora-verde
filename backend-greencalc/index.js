@@ -17,7 +17,7 @@ app.use('/api/user',authRoute)
 app.use('/api/posts',postRoute)
 
 app.get('/',(req,res)=>{
-	res.send("Greetings from Dinohacks!")
+	res.send("Greetings from Dinohacks team!")
 })
 
 
