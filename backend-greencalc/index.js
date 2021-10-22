@@ -16,4 +16,9 @@ app.use(express.json())
 app.use('/api/user',authRoute)
 app.use('/api/posts',postRoute)
 
+app.get('/',(req,res)=>{
+	res.send("Greetings from Dinohacks!")
+})
+
+
 app.listen(8080,()=> console.log('Server up.'))
