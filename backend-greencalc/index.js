@@ -14,7 +14,7 @@ app.use('/api/user',authRoute)
 app.use('/api/posts',postRoute)
 
 app.get('/',(req,res)=>{
-	res.json({ message: "Hi from the Dinohacks Team!" })
+	res.json({ message: "Server on" })
 });
 
 app.listen(8080,()=> console.log('Server up.'))
