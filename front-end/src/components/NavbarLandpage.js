@@ -1,5 +1,4 @@
 import React from 'react'
-import Button from './Button'
 import ButtonHeader from './ButtonHeader'
 import Title from './Title'
 

@@ -7,7 +7,7 @@ import NewReport from "./pages/NewReport";
 function App() {
   return (
     <div className="text-black">
-      <NewReport/>
+      <Landpage />
     </div>
   );
 }
