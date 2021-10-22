@@ -1,10 +1,11 @@
 //import UIElements from "./pages/UIElements";
-import Welcome from "./pages/Welcome";
+import NewReport from "./pages/NewReport";
+//import Welcome from "./pages/Welcome";
 
 function App() {
   return (
     <div className="text-black">
-      <Welcome/>
+      <NewReport/>
     </div>
   );
 }
