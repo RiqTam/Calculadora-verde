@@ -1,15 +1,27 @@
 import React, { useState } from 'react'
+import { useHistory, useLocation } from 'react-router';
 import Button from '../components/Button';
 import Input from '../components/Input';
 import Label from '../components/Label';
 import NavbarLandpage from '../components/NavbarLandpage';
 import Title from '../components/Title'
+import useAuth from '../hooks/useAuth';
 import background from '../images/background1.png';
 import calculadora from '../images/Calculadora.png';
 import dino from '../images/welcomeDino.png';
 
 export default function Landpage() {
 	const [showLogin, setShowLogin] = useState(false);
+	const history = useHistory();
+	const location = useLocation();
+	const auth = useAuth();
+
+	const { from } = location.state || { from: { pathname: "/" } };
+	const login = () => {
+		auth.signin(() => {
+			history.replace(from);
+		});
+	};
 
 	return (
 		<div style={{backgroundImage: `url(${background})`}} className='bg-cover h-screen flex'>
@@ -32,7 +44,7 @@ export default function Landpage() {
 							<Input label="Número de Telefono" placeholder="calculadora_verde@ejemplo.com" />
 							<Input label="password" placeholder="Ingresa tu contraseña" />
 							<Label label="¿Olvidaste tu contraseña?" className ="text-green text-right" />
-							<Button label="Iniciar Sesion" className="mt-10"/>
+							<Button label="Iniciar Sesion" className="mt-10" onClick={login}/>
 						</div>
 					}
 					<div className='m-auto mb-10'>

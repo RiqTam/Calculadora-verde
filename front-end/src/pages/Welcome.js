@@ -7,7 +7,6 @@ import welcomeImg from '../images/welcomeImg.png';
 export default function Welcome() {
     return (
         <div className="bg-white-dark h-screen flex-col flex ">
-            <Navbar/>
             <div className="flex flex-grow">
                 <section className="m-auto w-3/5 pl-48">
                     <h1 className="text-green-dark font-black text-4xl">

@@ -1,14 +1,19 @@
 import { BrowserRouter } from "react-router-dom/cjs/react-router-dom.min";
-import RoutesLandpage from "./routes/RoutesLandpage";
+import Navbar from "./components/Navbar";
+import NavbarLandpage from "./components/NavbarLandpage";
+import AuthContext from "./context/AuthContext";
+import useAuth from "./hooks/useAuth";
+import useProviderAuth from "./hooks/useProviderAuth";
+import Routes from "./routes/Routes";
 
-function App() {
+export default function App() {
   return (
-    <BrowserRouter>
-      <div className="text-black">
-        <RoutesLandpage />
-      </div>
-    </BrowserRouter>
+    <div className="text-black">
+      <AuthContext.Provider value={useProviderAuth()} >
+        <BrowserRouter>
+              <Routes/>
+        </BrowserRouter>
+      </AuthContext.Provider>
+    </div>
   );
 }
-
-export default App;
