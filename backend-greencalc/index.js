@@ -17,7 +17,7 @@ app.use('/api/user',authRoute)
 app.use('/api/posts',postRoute)
 
 app.get('/',(req,res)=>{
-	res.send(JSON.parse("{message:'Hi from Dinohack team! '}"))
+	res.send(JSON.parse("{'message':'Hi from the Dinohacks team!'}"))
 })
 
 
