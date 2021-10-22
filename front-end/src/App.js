@@ -1,9 +1,9 @@
-import UIElements from "./pages/UIElements";
+import Landpage from "./pages/Landpage";
 
 function App() {
   return (
     <div className="text-black">
-      <UIElements />
+      <Landpage />
     </div>
   );
 }
