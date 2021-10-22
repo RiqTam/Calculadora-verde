@@ -7,7 +7,7 @@ export default function Input(props) {
 			<Label label={props.label}	/>
 			<input type="text"  placeholder={props.placeholder}
 					className="appearance-none border-2 rounded-full h-50 border-gray p-3 mt-3 pl-5
-								focus:outline-none  focus:border-green "/>
+								focus:outline-none  focus:border-green w-full"/>
 		</div>
 	)
 }

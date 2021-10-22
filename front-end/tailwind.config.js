@@ -8,6 +8,9 @@ module.exports = {
       },
       borderRadius:{
         'xxl': '10rem'
+      },
+      minHeight:{
+        '1/2': '50%'
       }
     },
     colors:{

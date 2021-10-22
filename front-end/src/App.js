@@ -1,14 +1,13 @@
-import { Router } from "react-router";
-import Landpage from "./pages/Landpage";
-//import UIElements from "./pages/UIElements";
-import NewReport from "./pages/NewReport";
-//import Welcome from "./pages/Welcome";
+import { BrowserRouter } from "react-router-dom/cjs/react-router-dom.min";
+import RoutesLandpage from "./routes/RoutesLandpage";
 
 function App() {
   return (
-    <div className="text-black">
-      <Landpage />
-    </div>
+    <BrowserRouter>
+      <div className="text-black">
+        <RoutesLandpage />
+      </div>
+    </BrowserRouter>
   );
 }
 
