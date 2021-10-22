@@ -1,5 +1,6 @@
 import React from 'react'
 import Button from '../components/Button';
+import Navbar from '../components/Navbar';
 import Title from '../components/Title'
 import background from '../images/background1.png';
 import calculadora from '../images/Calculadora.png';
@@ -7,6 +8,7 @@ import calculadora from '../images/Calculadora.png';
 export default function Landpage() {
 	return (
 		<div style={{backgroundImage: `url(${background})`}} className='bg-cover h-screen flex'>
+			<Navbar />
 			<div className='p-32 w-1/2 h-full bg-white rounded-tr-xxl rounded-br-xxl'>
 				<Title title="Calculadora Verde" />
 				<p className='my-5 text-2xl mt-10'>

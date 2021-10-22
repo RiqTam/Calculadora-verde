@@ -5,7 +5,7 @@ import Welcome from "./pages/Welcome";
 function App() {
   return (
     <div className="text-black">
-      <Welcome />
+      <Landpage />
     </div>
   );
 }
