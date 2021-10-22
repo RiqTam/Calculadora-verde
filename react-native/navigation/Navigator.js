@@ -32,7 +32,6 @@ export default function Navigator() {
         <Tab.Screen name="Add Data" component={AddData}/>
         <Tab.Screen name="Tips" component={Tips} />
         <Tab.Screen name="Settings" component={Settings} />
-        <Tab.Screen name="UI" component={ElementsList} />
       </Tab.Navigator>
     </NavigationContainer>
   );
