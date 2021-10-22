@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function Title(props) {
+export default function Title({title, textSize}) {
 	return (
-		<div className="text-5xl font-black">
-			{props.title}
+		<div className={`${ textSize || 'text-5xl'} font-black`}>
+			{title}
 		</div>
 	)
 }
