@@ -7,6 +7,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import AddData from "../screens/AddData";
 import Tips from "../screens/Tips";
 import Settings from "../screens/Settings";
+import Fingerprint from "../screens/Fingerprint";
 
 const Tab = createBottomTabNavigator();
 
@@ -27,7 +28,7 @@ export default function Navigator() {
 			)
 		}, headerShown: false, tabBarActiveTintColor: "#188216", tabBarInactiveTintColor: "#000"})}
       >
-        <Tab.Screen name="Fingerprint" component={ElementsList} />
+        <Tab.Screen name="Fingerprint" component={Fingerprint} />
         <Tab.Screen name="Add Data" component={AddData}/>
         <Tab.Screen name="Tips" component={Tips} />
         <Tab.Screen name="Settings" component={Settings} />

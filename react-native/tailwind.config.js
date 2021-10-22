@@ -8,7 +8,16 @@ module.exports = {
         green:{
           light: '#70C900',
           medium: '#188216',
-        }
+        },
+        white: '#FAFAFA',
+        red:{
+          DEFAULT: '#EC0000',
+          dark: '#710808'
+        },
+        textLight: '#c5c5c5'
+      },
+      borderWidth:{
+        '20': '20px'
       }
     },
   },

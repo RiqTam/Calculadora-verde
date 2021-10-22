@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text, ScrollView } from 'react-native'
-import { Checkbox, H1, Input, Span } from '../components'
+import { Button, Checkbox, H1, Input, Span } from '../components'
 import TextBase from '../components/TextBase'
 import tw from '../tailwind'
 
@@ -31,6 +31,7 @@ export default function AddData() {
 					<Checkbox label="Prefiero no decirlo o no aplica" />
 					<TextBase style={tw`ml-5`}>Prefiero no decirlo o no aplica</TextBase>
 				</View>
+				<Button label="Agregar" style={tw`mb-10`}/>
 			</ScrollView>
 		</View>
 	)
