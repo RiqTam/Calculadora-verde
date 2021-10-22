@@ -1,25 +1,51 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import tailwind from 'tailwind-rn';
-import Button from './components/elements/Button';
+import React, { useMemo, useState } from 'react';
+import { View } from 'react-native';
+import tw from './tailwind';
+import { setCustomText } from 'react-native-global-props';
+import {useFonts} from 'expo-font';
+import Login from './screens/Login';
+import Navigator from './navigation/Navigator';
+import LoginContext from './context/LoginContext';
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text style={tailwind('text-black font-bold text-xl')}>Basic Elements</Text>
-      <Button />
-      <StatusBar style="auto" />
-    </View>
+  const [logged, setLogged] = useState(false);
+  const value = useMemo(
+    () => ({ logged, setLogged }), 
+    [logged]
   );
+
+    // font loading
+    let [fontsLoaded] = useFonts({
+      Montserrat: require('./assets/fonts/Montserrat-Regular.otf'),
+      MontserratBlack: require('./assets/fonts/Montserrat-Black.otf'),
+      MontserratBold: require('./assets/fonts/Montserrat-Bold.otf'),
+    });
+
+    if(!fontsLoaded) return(<View></View>);
+
+    setCustomText({
+      style: { 
+        fontFamily: 'Montserrat',
+        fontSize: 18,
+        color: tw.color(`black`)
+      }
+    }); 
+
+  return (
+      <LoginContext.Provider value={value}>
+        {logged?
+          <Navigator logout={()=>setLogged(false)}/>
+        :
+          <View style={tw`mt-10`}>
+            <Login login={()=>setLogged(true)} />
+            <StatusBar style="auto" />
+          </View>
+        }
+      </LoginContext.Provider>
+  );   
+
+
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 0
-  },
-});
+

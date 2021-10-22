@@ -1,4 +1,4 @@
-import UIElements from "./components/pages/UIElements";
+import UIElements from "./pages/UIElements";
 
 function App() {
   return (
