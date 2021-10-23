@@ -29,6 +29,10 @@ const bimesterSchema = new mongoose.Schema({
 	},
 	belongs_to: {
 		type:Object
+	},
+	created_at:{
+		type:Date,
+		default:new Date()
 	}
 
 
