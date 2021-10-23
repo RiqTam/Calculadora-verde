@@ -7,7 +7,8 @@ function auth (req,res,next){
     const verified = jwt.verify(token,process.env.TOKEN_SECRET)
     if(verified){
       req.user = verified
-      next()
+		req.body.user_id = verified._id
+		next()
     }
   }catch(err){
     res.status(400).send('Invalid token')
