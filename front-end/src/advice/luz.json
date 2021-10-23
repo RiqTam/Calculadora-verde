@@ -1,0 +1,23 @@
+{
+    "category": "Luz",
+    "advice": [
+        {
+            "importance": 3,
+            "text": "Tu empresa puede reducir hasta en un 99% las emisiones de CO2 relacionadas al consumo de energía eléctrica a través de la implementación de soluciones solares como el sistema fotovoltaico.",
+            "bbva": "BBVA te ayuda a financiar proyectos de sustentabilidad dentro de tu empresa a través del Préstamo Verde.",
+            "link": "https://www.bbva.mx/empresas/productos/financiamiento/creditos-a-corto-y-largo-plazo/credito-refaccionario.html"
+        },
+        {
+            "importance": 2,
+            "text": "Tu empresa puede reducir las emisiones de CO2 generadas por el uso de energía eléctrica a través del cambio de focos, por luces LED las cuales ayudan, no sólo al ambiente, sino también reflejan un ahorro de hasta % en tu pago de energía eléctrica.",
+            "bbva": "BBVA te ayuda a financiar proyectos de sustentabilidad dentro de tu empresa a través de las Cartas de crédito de importación sostenibles.",
+            "link": "https://www.bbva.mx/empresas/productos/comercio-internacional/importacion/carta-de-credito-de-importacion.html"
+        },
+        {
+            "importance": 1,
+            "text": "Tu empresa puede reducir gastos en energía eléctrica y de emisiones de CO2 a través del uso de energías renovables, como el uso de generadores eólicos y paneles solares.",
+            "bbva": "BBVA te ayuda a financiar proyectos de sustentabilidad dentro de tu empresa a través de las Cartas de crédito de importación sostenibles.",
+            "link": "https://www.bbva.mx/empresas/productos/comercio-internacional/importacion/carta-de-credito-de-importacion.html"
+        }
+    ]
+}
