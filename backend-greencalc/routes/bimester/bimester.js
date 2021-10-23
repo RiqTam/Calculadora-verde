@@ -12,7 +12,7 @@ router.post("/newBimester",verify, async(req,res)=>{
 		belongs_to : req.body.user_id
 	});
 	const savedBimester = await bim.save();
-	if(savedBimester){
+	if(!savedBimester){
 		console.log("Error saving bimester")
 		res.status(400).json({message:"Error creating bimester record"});
 	}else{
@@ -23,5 +23,13 @@ router.post("/bimester",verify, async(req,res)=>{
 	console.log(req.body.user_id)
 	res.json(req.body.user_id);
 })
-
+router.post("/getMyBimester",verify, async(req,res)=>{
+	const bim = await Bimester.findById(req.body.user_id);
+	if(!bim){
+		console.log("Bimester not found");
+		res.status(400).json({message:"Could not get Bimester from your user"})
+	}else{
+		res.status(200).json(bim);
+	}
+})
 module.exports = router;
