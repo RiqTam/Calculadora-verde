@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
-import Button from './Button'
-import Title from './Title'
+import Button from './Button';
+import Title from './Title';
+import { Icon } from '@iconify/react';
 
 export default function Navbar() {
     const [showMenu, setShowMenu] = useState(false);
@@ -36,12 +37,17 @@ export default function Navbar() {
                 </div>
             </ul>
             <div className='flex-col flex w-full lg:hidden'>
-                <button className=' m-auto mr-0 mt-0' onClick={()=>setShowMenu(!showMenu)}>Menu</button>
+                <button className=' m-auto mr-0 mt-0' onClick={()=>setShowMenu(!showMenu)}>
+                    <Icon icon="dashicons:menu-alt3" className="text-green-defdark" style={{fontSize: '32px'}}/>
+                </button>
                 {
                     showMenu?
-                        <ul className="select-none flex flex-col m-auto mr-0 text-white bg-green ">
-                            <button className='hover:bg-green-dark' >Sobre Nosotros</button>
-                            <button className='hover:bg-green-dark' >Iniciar Sesion</button>
+                        <ul className="select-none flex flex-col m-auto mr-0 mb-0 text-white bg-green ">
+                            <button className='hover:bg-green-dark py-3 px-5 font-semibold '>Agregar reporte</button>
+                            <button className='hover:bg-green-dark py-3 px-5 font-semibold border-t-2 border-green-dark'>Ver huella</button>
+                            <button className='hover:bg-green-dark py-3 px-5 font-semibold border-t-2 border-green-dark'>Ver consejos</button>
+                            <button className='hover:bg-green-dark py-3 px-5 font-semibold border-t-2 border-green-dark'>Mi progreso</button>
+                            <button className='hover:bg-green-dark py-3 px-5 font-semibold border-t-2 border-green-dark'>Salir</button>
                         </ul> 
                     :''
                 }
