@@ -40,12 +40,12 @@ export default function Landpage() {
 									<Button label="Iniciar Sesion" className="mt-10" onClick={login}/>
 								</div>
 							:
-								<div className='  '>
+								<div className='mt-20 xl:mt-0   '>
 									<Title title="Calculadora Verde" />
-									<p className='my-5 text-2xl mt-10'>
+									<p className='my-5 sm:text-lg xl:text-2xl mt-10'>
 										Te damos la bienvenida a la calculadora verde de Dinohacks. 
 									</p>
-									<p className='my-5 text-2xl'>
+									<p className='my-5 sm:text-lg xl:text-2xl'>
 										Aquí puedes calcular cuántas emisiones de CO2 genera tu empresa, 
 										y te brindamos opciones para reducir dichas emisiones y gastos siguiendo 
 										algunos consejos enlazados a las soluciones que BBVA ofrece como parte de 
