@@ -2,8 +2,6 @@ import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 import Home from '../pages/Home'
 import Landpage from '../pages/Landpage'
-import NewReport from '../pages/NewReport'
-import Welcome from '../pages/Welcome'
 import PrivateRoute from './PrivateRoute'
 
 export default function Routes() {

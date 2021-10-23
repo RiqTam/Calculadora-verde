@@ -1,6 +1,8 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import Button from '../components/Button'
-import Navbar from '../components/Navbar'
+import Label from '../components/Label';
+import Title from '../components/Title';
 import welcomeDino from '../images/welcomeDino.png';
 import welcomeImg from '../images/welcomeImg.png';
 
@@ -8,17 +10,15 @@ export default function Welcome() {
     return (
         <div className="bg-white-dark h-screen flex-col flex ">
             <div className="flex flex-grow">
-                <section className="m-auto w-3/5 pl-48">
-                    <h1 className="text-green-dark font-black text-4xl">
-                        Bienvenido(a), %user_name%
-                    </h1>
-                    <p>
-                        Parece que aún no tenemos información para calcular tu huella...
-                    </p>
-                    <p>
-                        ¿Por qué no agregas tus datos bimestrales para calcularla?
-                    </p>
-                    <Button label="Agregar reporte"/>
+                <section className="m-auto w-3/5 pl-48 flex-col">
+                    <Title title={"Bienvenido(a), %user_name%"} className="text-green-dark mb-10" />
+                        <Label label="Parece que aún no tenemos información para calcular tu huella..." 
+                                className="text-2xl"/>
+                        <Label label="¿Por qué no agregas tus datos bimestrales para calcularla?" 
+                                className="text-2xl"/>
+                    <Link to={"/Report"}>
+                        <Button label="Agregar reporte" className={"mt-10"} size={"w-auto"}/>
+                    </Link>
                 </section>
                 <section className="py-4 flex w-2/5">
                     <img src={welcomeDino} alt="Welcome Dino" className="m-auto"/>
