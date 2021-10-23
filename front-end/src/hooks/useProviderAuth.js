@@ -29,10 +29,8 @@ export default function useProviderAuth() {
 	};
 
 	const signout = callback => {
-		return fakeAuth.signout(() => {
-			setUser(null);
-			callback();
-		});
+		setUser(null);
+		callback();
 	};
 
 	const request = (url, method, data )=> api(url, method, data, user.token);
