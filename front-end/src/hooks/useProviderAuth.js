@@ -17,7 +17,7 @@ export default function useProviderAuth() {
 	};
 
 	const signin = (user, callback) => {
-        api("user/login", "POST", user)
+        /*api("user/login", "POST", user)
 		.then(res => {
 			console.log(res.data);
 			setUser(res.data);
@@ -25,7 +25,9 @@ export default function useProviderAuth() {
 		})
         .catch((error) =>{
 			console.log(error);
-        });
+        });*/
+		setUser("dfa");
+		callback();
 	};
 
 	const signout = callback => {
