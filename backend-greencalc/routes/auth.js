@@ -44,7 +44,10 @@ router.post("/login", async (req, res) => {
     return res.status(400).send("Phone or password is wrong");
   }
   const token = jwt.sign({_id: user.id}, process.env.TOKEN_SECRET);
-  res.header('auth-token',token).send(token);
+  res.header('auth-token',token).json({
+      name: user.name,
+      phone: user.phone
+  });
 });
 
 module.exports = router;
