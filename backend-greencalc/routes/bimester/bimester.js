@@ -12,7 +12,12 @@ router.post("/newBimester",verify, async(req,res)=>{
 		belongs_to : req.body.user_id
 	});
 	const savedBimester = await bim.save();
-	res.send(savedBimester);
+	if(savedBimester){
+		console.log("Error saving bimester")
+		res.status(400).json({message:"Error creating bimester record"});
+	}else{
+		res.status(200).json(savedBimester);
+	}
 })
 router.post("/bimester",verify, async(req,res)=>{
 	console.log(req.body.user_id)
