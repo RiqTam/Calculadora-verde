@@ -42,12 +42,20 @@ export default function Navbar() {
                 </button>
                 {
                     showMenu?
-                        <ul className="select-none flex flex-col m-auto mr-0 mb-0 text-white bg-green ">
-                            <button className='hover:bg-green-dark py-3 px-5 font-semibold '>Agregar reporte</button>
-                            <button className='hover:bg-green-dark py-3 px-5 font-semibold border-t-2 border-green-dark'>Ver huella</button>
-                            <button className='hover:bg-green-dark py-3 px-5 font-semibold border-t-2 border-green-dark'>Ver consejos</button>
-                            <button className='hover:bg-green-dark py-3 px-5 font-semibold border-t-2 border-green-dark'>Mi progreso</button>
-                            <button className='hover:bg-green-dark py-3 px-5 font-semibold border-t-2 border-green-dark'>Salir</button>
+                        <ul className="select-none flex flex-col m-auto mr-0 mb-0 text-white bg-green fixed right-5 top-16">
+                            <Link to={"/Report"}>
+                                <button className='hover:bg-green-dark py-3 px-5 w-full font-semibold '>Agregar reporte</button>
+                            </Link>
+                            <Link to={"/Fingerprint"}>
+                                <button className='hover:bg-green-dark py-3 px-5 w-full font-semibold border-t-2 border-green-dark'>Ver huella</button>
+                            </Link>
+                            <Link to={"/Tips"}>
+                                <button className='hover:bg-green-dark py-3 px-5 w-full font-semibold border-t-2 border-green-dark'>Ver consejos</button>
+                            </Link>
+                            <Link to={"/Progress"}>
+                                <button className='hover:bg-green-dark py-3 px-5 w-full font-semibold border-t-2 border-green-dark'>Mi progreso</button>
+                            </Link>
+                            <button className='hover:bg-green-dark py-3 px-5 w-full font-semibold border-t-2 border-green-dark' onClick={logout}>Salir</button>
                         </ul> 
                     :''
                 }
