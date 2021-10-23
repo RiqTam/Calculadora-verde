@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import api from '../api/api'
 import Button from '../components/Button'
 import Expence from '../components/Expence'
 import Title from '../components/Title'
@@ -18,7 +17,7 @@ export default function NewReport() {
             gasto_gasolina: gasolina,
             gasto_gas: gas,
             gasto_agua: agua,
-            co2_emitido: 1,
+            co2_emitido: 10,
         } 
 
         auth.request("bimester/newBimester", "POST", report)

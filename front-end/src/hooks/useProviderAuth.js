@@ -26,6 +26,8 @@ export default function useProviderAuth() {
         .catch((error) =>{
 			console.log(error);
         });
+		/*setUser("dfa");
+		callback();*/
 	};
 
 	const signout = callback => {
