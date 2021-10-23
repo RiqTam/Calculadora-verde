@@ -9,17 +9,22 @@ import useAuth from '../hooks/useAuth';
 import background from '../images/background1.png';
 import calculadora from '../images/Calculadora.png';
 import dino from '../images/welcomeDino.png';
-import { AnimateOnChange } from 'react-animation'
 
 export default function Landpage() {
 	const [showLogin, setShowLogin] = useState(false);
 	const history = useHistory();
 	const location = useLocation();
 	const auth = useAuth();
+	const [phone, setPhone] = useState('5541744839');
+	const [password, setPassword] = useState('abdiel123')
 
 	const { from } = location.state || { from: { pathname: "/" } };
-	const login = () => {
-		auth.signin(() => {
+	function login() {
+		const user={
+			phone,
+			password
+		}
+		auth.signin(user, () => {
 			history.replace(from);
 		});
 	};
@@ -29,13 +34,12 @@ export default function Landpage() {
 			<NavbarLandpage onLandpage={true} setShowLogin={setShowLogin}/>
 				<div className='p-10 pb-0 w-full h-full bg-white  flex flex-col
 								md:w-1/2 xl:p-16 xl:pt-32 xl:pb-0 2xl:p-32 2xl:pb-0 md:rounded-tr-xxl md:rounded-br-xxl'>
-					<AnimateOnChange>
 						{showLogin?
 								<div className='px-5 pt-20 flex-col space-y-5 h-auto 
 												xl:pt-0 xl:px-20'>
 									<Title title="Iniciar Sesion" className="xl:mb-16"/>
-									<Input label="Número de Telefono" placeholder="xxxxxxxxxxx" />
-									<Input label="Contraseña" placeholder="Ingresa tu contraseña" />
+									<Input label="Número de Telefono" placeholder="xxxxxxxxxxx" value={phone} onChange={setPhone} />
+									<Input label="Contraseña" placeholder="Ingresa tu contraseña" value={password} onChange={setPassword}/>
 									<Label label="¿Olvidaste tu contraseña?" className ="text-green text-right" />
 									<Button label="Iniciar Sesion" className="mt-10" onClick={login}/>
 								</div>
@@ -54,7 +58,6 @@ export default function Landpage() {
 									<Button label="Iniciar Sesion" onClick={()=>setShowLogin(true)}/>
 								</div>
 						}
-					</AnimateOnChange>
 					<div className='m-auto mb-10'>
 						<img src={dino} alt="icon" className="w-52 m-auto mt-10 xl:w-80"/>
 					</div>

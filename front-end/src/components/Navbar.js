@@ -14,7 +14,7 @@ export default function Navbar() {
         auth.signout(()=> history.push("/"));
 	};
     return (
-        <nav className="flex fixed top-0 w-full p-5 pl-10">
+        <nav className="flex fixed top-0 w-full p-5 pl-10 bg-white-dark">
             <Link to="/">
                 <Title className="font-black ml-0" title="Dinohacks" textSize="text-2xl">Dinohacks</Title>
             </Link>

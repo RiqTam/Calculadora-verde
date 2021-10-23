@@ -3,15 +3,18 @@ import { Link } from 'react-router-dom';
 import Button from '../components/Button'
 import Label from '../components/Label';
 import Title from '../components/Title';
+import useAuth from '../hooks/useAuth';
 import welcomeDino from '../images/welcomeDino.png';
 import welcomeImg from '../images/welcomeImg.png';
 
 export default function Welcome() {
+    const auth = useAuth();
+
     return (
         <div className="bg-white-dark h-screen flex-col flex ">
             <div className="flex flex-grow flex-col md:flex-row">
                 <section className="m-auto w-full md:w-3/5 p-16 pt-20 pb-0 md:pl-20 xl:pl-48 flex-col">
-                    <Title title={"Bienvenido(a), %user_name%"} className="text-green-dark mb-10" />
+                    <Title title={`Bienvenido(a), ${auth.user.name}`} className="text-green-dark mb-10" />
                         <Label label="Parece que aún no tenemos información para calcular tu huella..." 
                                 className="md:text-2xl"/>
                         <Label label="¿Por qué no agregas tus datos bimestrales para calcularla?" 

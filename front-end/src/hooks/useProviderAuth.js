@@ -1,8 +1,8 @@
 import { useState } from "react";
+import api from "../api/api";
 
 export default function useProviderAuth() {
 	const [user, setUser] = useState(null);
-	
 
 	const fakeAuth = {
 		isAuthenticated: false,
@@ -16,37 +16,31 @@ export default function useProviderAuth() {
 		}
 	};
 
-	const signin = callback => {
-		fetch("http://3.142.153.208:8080/api/user/login",{
-			method: "POST",
-			body : JSON.stringify({
-				phone:'5541744839',
-				password:'abdiel123'
-			})
-		}).then((res)=>{ res.json() }).then((response)=>{
-			
-			
-			console.log(response)
-		
-		}).catch((error)=>{
-			console.error(error);
-		})
-		return fakeAuth.signin(() => {
-			setUser("user");
+	const signin = (user, callback) => {
+        /*api("user/login", "POST", user)
+		.then(res => {
+			console.log(res.data);
+			setUser(res.data);
 			callback();
-		});
+		})
+        .catch((error) =>{
+			console.log(error);
+        });*/
+		setUser("dfa");
+		callback();
 	};
 
 	const signout = callback => {
-		return fakeAuth.signout(() => {
-			setUser(null);
-			callback();
-		});
+		setUser(null);
+		callback();
 	};
+
+	const request = (url, method, data )=> api(url, method, data, user.token);
 
 	return {
 		user,
 		signin,
-		signout
+		signout,
+		request
 	};
 }
