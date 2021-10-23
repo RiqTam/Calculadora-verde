@@ -5,9 +5,9 @@ import Title from '../components/Title'
 
 export default function NewReport() {
     return (
-        <div className='p-32'>
+        <div className='p-10 pt-28 md:p-32'>
             <Title title={"Agregar Reporte"} />
-            <div className="border-b-2 mt-20 border-gray">
+            <div className="border-b-2 mt-14 border-gray">
                 <h1 className="text-green-dark font-black text-4xl">
                     Ayudanos a medir tu influencia en el<br/> medio ambiente...
                 </h1>
@@ -17,7 +17,7 @@ export default function NewReport() {
                 </h2>
                 <br/>   
             </div>
-            <div className="mt-20 flex-col flex space-y-10 w-1/2">
+            <div className="mt-20 flex-col flex space-y-10 xl:w-1/2">
                 <Expence className="m-20" label="Gasto bimestral de luz:"/>
                 <Expence className="m-20" label="Gasto bimestral de gas:"/>
                 <Expence className="m-20" label="Gasto bimestral de gasolina:"/>
