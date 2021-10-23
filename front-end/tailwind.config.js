@@ -22,7 +22,9 @@ module.exports = {
       },
       green:{
         DEFAULT:'#7CC72D',
-        dark: '#188216'
+        dark: '#188216',
+        darker: '#014A00',
+        defdark: '#569A00'
       }
     }
   },
