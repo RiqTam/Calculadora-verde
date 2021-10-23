@@ -4,14 +4,23 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const authRoute = require('./routes/auth');
 const postRoute = require('./routes/posts')
-    
+const bimesterRoute = require('./routes/bimester/bimester')
+
 dotenv.config()
 
-mongoose.connect(process.env.DB_CONNECT,()=>{ console.log("Connected to db") })
+mongoose.connect(process.env.DB_CONNECT,(err)=>{ 
+	if(err){
+		console.log(err);
+	}else{
+		console.log('Connected to database!');
+	}
+})
 
 app.use(express.json())
+
 app.use('/api/user',authRoute)
-app.use('/api/posts',postRoute)
+app.use('/api/post',postRoute)
+app.use('/api/bimester',bimesterRoute)
 
 app.get('/',(req,res)=>{
 	res.json({ message: "Server on" })
