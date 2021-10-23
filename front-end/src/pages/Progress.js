@@ -23,7 +23,7 @@ export default function Progress() {
 	}, [auth])
 
 	const data = {
-		labels: ['1', '2', '3', '4', '5', '6'],
+		labels: bimesters.map(bimester=> bimester.created_at),
 		datasets: [
 			{
 			label: 'Emision de Carbono',

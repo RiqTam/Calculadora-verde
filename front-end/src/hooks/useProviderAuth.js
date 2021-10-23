@@ -35,7 +35,7 @@ export default function useProviderAuth() {
 		callback();
 	};
 
-	const request = (url, method, data )=> api(url, method, data, user.token);
+	const request = async (url, method, data )=> await api(url, method, data, user.token);
 
 	return {
 		user,

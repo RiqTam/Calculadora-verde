@@ -11,16 +11,15 @@ export default function NewReport() {
     const [agua, setAgua] = useState(4)
 	let auth = useAuth();
 
-    function addReport() {
+    async function addReport() {
         const report={
             gasto_luz: luz,
             gasto_gasolina: gasolina,
             gasto_gas: gas,
             gasto_agua: agua,
-            co2_emitido: 10,
         } 
-
-        auth.request("bimester/newBimester", "POST", report)
+        console.log(report)
+        await auth.request("bimester/newBimester", "POST", report)
 		.then(res => {
 			console.log(res.data);
 		})
