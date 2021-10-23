@@ -17,7 +17,7 @@ router.post("/newBimester",verify, async(req,res)=>{
 		gasto_gasolina : req.body.gasto_gasolina,
 		gasto_gas : req.body.gasto_gas,
 		gasto_agua : req.body.gasto_agua,
-		co2_emitido : co2(gasto_luz, gasto_gasolina, gasto_gas, gasto_agua),
+		co2_emitido : co2(req.body.gasto_luz, req.body.gasto_gasolina, req.body.gasto_gas, req.body.gasto_agua),
 		belongs_to : req.body.user_id
 	});
 	const savedBimester = await bim.save();
