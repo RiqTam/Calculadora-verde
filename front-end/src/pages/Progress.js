@@ -3,7 +3,7 @@ import Label from '../components/Label';
 import Title from '../components/Title'
 import useAuth from '../hooks/useAuth'
 import 'chart.piecelabel.js';
-import { Doughnut, Line } from 'react-chartjs-2';
+import {  Line } from 'react-chartjs-2';
 import CircleGraph from '../components/CircleGraph';
 
 export default function Progress() {
@@ -23,7 +23,7 @@ export default function Progress() {
 	}, [auth])
 
 	const data = {
-		labels: bimesters.map(bimester=> bimester.created_at),
+		labels: bimesters.map(bimester=> bimester.created_at.substring(0,10)),
 		datasets: [
 			{
 			label: 'Emision de Carbono',
@@ -42,49 +42,8 @@ export default function Progress() {
 		},
 		mantainAspectRatio: true,
 	};
-
-	const fingerprintOptions ={
-		borderWidth: 3,
-		label: 'CO2 emision',
-		cutout: "50%",
-		legend: { display: true, position: "right"},
-
-	}
-	const fingerprintData = {
-		labels: ['Huella Actual'],
-		datasets: [
-			{
-			data: [30,70],
-			backgroundColor: [
-				'#7CC72D',
-				"#EAEAEA",
-			],
-			borderColor: [
-				'#188216',
-				"#CACACA",
-			],
-			...fingerprintOptions
-			},
-		],		
-	}
-	const fingerprintDataBefore = {
-		labels: ['Huella anterior'],
-		datasets: [
-			{
-			data: [80,20],
-			backgroundColor: [
-				'#F12C2C',
-				"#EAEAEA",
-			],
-			borderColor: [
-				'#710808',
-				"#CACACA",
-			],
-			...fingerprintOptions
-			},
-		],		
-	}
-
+	
+	if(bimesters.length<1) return ''
 	return (
 		<div className='p-32'>
 			<Title title={"Tu historial de emisiones de CO²"} className={"text-green-dark mb-10"} />	
@@ -98,7 +57,7 @@ export default function Progress() {
 				</div>
 				<div className='flex h-10'>
 					<div className='w-1/3'>
-						<Title title={"Tu huella actual es de XXX"} className=" mt-10 text-base" />	
+						<Title title={`Tu huella actual es de ${bimesters[bimesters.length-1].co2_emitido}`} className=" mt-10 text-base" />	
 					</div>
 					<div className='w-1/4 m-auto'>
 						<CircleGraph  from={"#014A00"} to={"#7CC72D" } percentage={20} id="actual"/>
