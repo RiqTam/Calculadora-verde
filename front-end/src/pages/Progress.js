@@ -6,15 +6,23 @@ import 'chart.piecelabel.js';
 import {  Line } from 'react-chartjs-2';
 import CircleGraph from '../components/CircleGraph';
 
+function calculatePercentage(val) {
+	const perc = val/300;
+	return perc>1?100:parseFloat(perc*100).toFixed(2);
+}
 export default function Progress() {
 	const auth = useAuth();
 	const [bimesters, setBimesters] = useState([]);
+	const [current, setCurrent] = useState(null);
+	const [last, setLast] = useState(null);
 
 	useEffect(() => {
 		auth.request("bimester/getMyBimester","POST")
 		.then(res => {
 			console.log(res.data);
 			setBimesters(res.data);
+			setCurrent(parseFloat(res.data[res.data.length-1].co2_emitido).toFixed(2));
+			setLast(parseFloat(res.data[res.data.length-2].co2_emitido).toFixed(2));
 		})
         .catch((error) =>{
 			console.log(error);
@@ -44,6 +52,8 @@ export default function Progress() {
 	};
 	
 	if(bimesters.length<1) return ''
+	const percentageCurrent = calculatePercentage(current);
+	const percentageLast = calculatePercentage(last);
 	return (
 		<div className='p-32'>
 			<Title title={"Tu historial de emisiones de CO²"} className={"text-green-dark mb-10"} />	
@@ -57,13 +67,13 @@ export default function Progress() {
 				</div>
 				<div className='flex h-10'>
 					<div className='w-1/3'>
-						<Title title={`Tu huella actual es de ${bimesters[bimesters.length-1].co2_emitido}`} className=" mt-10 text-base" />	
+						<Title title={`Tu huella actual es de ${current}Kg CO₂ - ${percentageCurrent}`} className=" mt-10 text-base" />	
 					</div>
 					<div className='w-1/4 m-auto'>
-						<CircleGraph  from={"#014A00"} to={"#7CC72D" } percentage={20} id="actual"/>
+						<CircleGraph  from={"#014A00"} to={"#7CC72D" } percentage={percentageCurrent} id="actual"/>
 					</div>
 					<div className='w-1/5 m-auto'>
-						<CircleGraph  from={"#710808"} to={"#F12C2C" } percentage={80} id="before"/>
+						<CircleGraph  from={"#710808"} to={"#F12C2C" } percentage={percentageLast} id="before"/>
 					</div>
 				</div>
 			</div>
