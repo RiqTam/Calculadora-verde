@@ -1,9 +1,8 @@
 import { useState } from "react";
-import axios from 'axios';
+import api from "../api/api";
 
 export default function useProviderAuth() {
 	const [user, setUser] = useState(null);
-	
 
 	const fakeAuth = {
 		isAuthenticated: false,
@@ -18,21 +17,15 @@ export default function useProviderAuth() {
 	};
 
 	const signin = (user, callback) => {
-		const url ="http://3.142.153.208:8080/api/user/login" 
-		return axios({ 
-			url,
-			data: user,
-			method: 'POST',
-			headers: {
-				'Access-Control-Allow-Origin': '*',
-				'Content-Type': 'application/json',
-			},
-		})
+        api("user/login", "POST", user)
 		.then(res => {
-			console.log(res);
+			console.log(res.data);
 			setUser(res.data);
 			callback();
-		});
+		})
+        .catch((error) =>{
+			console.log(error);
+        });
 	};
 
 	const signout = callback => {
@@ -42,9 +35,12 @@ export default function useProviderAuth() {
 		});
 	};
 
+	const request = (url, method, data )=> api(url, method, data, user.token);
+
 	return {
 		user,
 		signin,
-		signout
+		signout,
+		request
 	};
 }
