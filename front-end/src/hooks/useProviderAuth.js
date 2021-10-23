@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from 'axios';
 
 export default function useProviderAuth() {
 	const [user, setUser] = useState(null);
@@ -16,23 +17,20 @@ export default function useProviderAuth() {
 		}
 	};
 
-	const signin = callback => {
-		fetch("http://3.142.153.208:8080/api/user/login",{
-			method: "POST",
-			body : JSON.stringify({
-				phone:'5541744839',
-				password:'abdiel123'
-			})
-		}).then((res)=>{ res.json() }).then((response)=>{
-			
-			
-			console.log(response)
-		
-		}).catch((error)=>{
-			console.error(error);
+	const signin = (user, callback) => {
+		const url ="http://3.142.153.208:8080/api/user/login" 
+		return axios({ 
+			url,
+			data: user,
+			method: 'POST',
+			headers: {
+				'Access-Control-Allow-Origin': '*',
+				'Content-Type': 'application/json',
+			},
 		})
-		return fakeAuth.signin(() => {
-			setUser("user");
+		.then(res => {
+			console.log(res);
+			setUser(res.data);
 			callback();
 		});
 	};
