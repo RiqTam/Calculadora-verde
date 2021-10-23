@@ -1,10 +1,12 @@
 import React from 'react'
 import Expence from '../components/Expence'
+import Title from '../components/Title'
 
 export default function NewReport() {
     return (
-        <div>
-            <div className="border-b-2 m-20">
+        <div className='p-32'>
+            <Title title={"Agregar Reporte"} />
+            <div className="border-b-2 mt-20">
                 <h1 className="text-green-dark font-black text-4xl">
                     Ayudanos a medir tu influencia en el<br/> medio ambiente...
                 </h1>
@@ -14,7 +16,7 @@ export default function NewReport() {
                 </h2>
                 <br/>   
             </div>
-            <div className="m-20">
+            <div className="mt-20">
                 <Expence className="m-20"/>
             </div>
         </div>
