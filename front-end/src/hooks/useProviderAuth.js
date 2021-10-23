@@ -2,6 +2,7 @@ import { useState } from "react";
 
 export default function useProviderAuth() {
 	const [user, setUser] = useState(null);
+	
 
 	const fakeAuth = {
 		isAuthenticated: false,
@@ -16,6 +17,20 @@ export default function useProviderAuth() {
 	};
 
 	const signin = callback => {
+		fetch("http://3.142.153.208:8080/api/user/login",{
+			method: "POST",
+			body : JSON.stringify({
+				phone:'5541744839',
+				password:'abdiel123'
+			})
+		}).then((res)=>{ res.json() }).then((response)=>{
+			
+			
+			console.log(response)
+		
+		}).catch((error)=>{
+			console.error(error);
+		})
 		return fakeAuth.signin(() => {
 			setUser("user");
 			callback();
