@@ -27,16 +27,18 @@ export default function Landpage() {
 	return (
 		<div style={{backgroundImage: `url(${background})`}} className='bg-cover h-screen flex'>
 			<NavbarLandpage onLandpage={true} setShowLogin={setShowLogin}/>
-				<div className='p-32 pb-0 w-1/2 h-full bg-white rounded-tr-xxl rounded-br-xxl flex flex-col'>
+				<div className='p-10 pb-0 w-full h-full bg-white  flex flex-col
+								md:w-1/2 xl:p-16 xl:pt-32 xl:pb-0 2xl:p-32 2xl:pb-0 md:rounded-tr-xxl md:rounded-br-xxl'>
 					<AnimateOnChange>
 						{showLogin?
-							<div className='px-20 flex-col space-y-5 h-auto '>
-								<Title title="Iniciar Sesion" className="mb-16"/>
-								<Input label="Número de Telefono" placeholder="calculadora_verde@ejemplo.com" />
-								<Input label="password" placeholder="Ingresa tu contraseña" />
-								<Label label="¿Olvidaste tu contraseña?" className ="text-green text-right" />
-								<Button label="Iniciar Sesion" className="mt-10" onClick={login}/>
-							</div>
+								<div className='px-5 pt-20 flex-col space-y-5 h-auto 
+												xl:pt-0 xl:px-20'>
+									<Title title="Iniciar Sesion" className="xl:mb-16"/>
+									<Input label="Número de Telefono" placeholder="xxxxxxxxxxx" />
+									<Input label="Contraseña" placeholder="Ingresa tu contraseña" />
+									<Label label="¿Olvidaste tu contraseña?" className ="text-green text-right" />
+									<Button label="Iniciar Sesion" className="mt-10" onClick={login}/>
+								</div>
 							:
 								<div className='  '>
 									<Title title="Calculadora Verde" />
@@ -54,10 +56,11 @@ export default function Landpage() {
 						}
 					</AnimateOnChange>
 					<div className='m-auto mb-10'>
-						<img src={dino} alt="icon" className="w-80 m-auto mt-10"/>
+						<img src={dino} alt="icon" className="w-52 m-auto mt-10 xl:w-80"/>
 					</div>
 				</div>
-				<div className='w-1/2  h-screen flex'>
+				<div className='h-1/2 hidden
+								md:w-1/2 md:h-screen md:flex '>
 					<img src={calculadora} alt="icon" className="w-100 m-auto"/>
 				</div>
 		</div>
