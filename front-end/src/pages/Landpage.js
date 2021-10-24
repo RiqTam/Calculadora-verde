@@ -55,7 +55,7 @@ export default function Landpage() {
 										algunos consejos enlazados a las soluciones que BBVA ofrece como parte de 
 										su cartera de servicios para la sustentabilidad.
 									</p>
-									<Button label="Iniciar Sesion" onClick={()=>setShowLogin(true)}/>
+									<Button label="Iniciar Sesion" onClick={()=>setShowLogin(true)} size={"w-auto"}/>
 								</div>
 						}
 					<div className='m-auto mb-10'>
