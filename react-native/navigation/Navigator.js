@@ -1,15 +1,12 @@
 import { NavigationContainer } from "@react-navigation/native";
 import React from "react";
-import Landpage from "../screens/Landpage";
-import ElementsList from "../screens/ElementsList";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialIcons } from '@expo/vector-icons';
 import AddData from "../screens/AddData";
 import Tips from "../screens/Tips";
 import Settings from "../screens/Settings";
 import Fingerprint from "../screens/Fingerprint";
-import useAuth from '../hooks/useAuth';
-import { useEffect } from "react/cjs/react.development";
+import useAuth from "../hooks/useAuth";
 
 const Tab = createBottomTabNavigator();
 
@@ -23,7 +20,7 @@ export default function Navigator({setshowLogin}) {
   return (
     <NavigationContainer>
       <Tab.Navigator
-        initialRouteName="Fingerprint"
+        initialRouteName="Add Data"
         screenOptions={({route})=>({tabBarIcon: (props)=>{
 			const icons={
 				"Add Data": "add-box",

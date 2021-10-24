@@ -5,11 +5,11 @@ import TextBase from '../components/TextBase'
 import useAuth from '../hooks/useAuth'
 import tw from '../tailwind'
 
-export default function AddData() {
-    const [luz, setLuz] = useState(1000)
-    const [gas, setGas] = useState(2000)
-    const [gasolina, setGasolina] = useState(3500)
-    const [agua, setAgua] = useState(10000)
+export default function AddData({navigation}) {
+    const [luz, setLuz] = useState("100")
+    const [gas, setGas] = useState("200")
+    const [gasolina, setGasolina] = useState("1000")
+    const [agua, setAgua] = useState("1500")
 	let auth = useAuth();
 
     async function addReport() {
@@ -19,11 +19,9 @@ export default function AddData() {
             gasto_gas: gas,
             gasto_agua: agua,
         } 
-        console.log(report)
         await auth.request("bimester/newBimester", "POST", report)
 		.then(res => {
-			console.log(res.data);
-            //history.push("/Fingerprint");
+			navigation.navigate('Fingerprint')
 		})
         .catch((error) =>{
 			console.log(error);
@@ -63,7 +61,7 @@ export default function AddData() {
 					<TextBase style={tw`ml-5`}>Prefiero no decirlo o no aplica</TextBase>
 				</View>
 
-				<Button label="Agregar" style={tw`mb-10`} onClick={addReport} />
+				<Button label="Agregar" style={tw`mb-10`} onPress={addReport} />
 			</ScrollView>
 		</View>
 	)
