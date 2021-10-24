@@ -28,16 +28,22 @@ router.post("/newBimester", verify, async (req, res) => {
     belongs_to: req.body.user_id,
   });
   const savedBimester = await bim.save();
-  let allBim = await Bimester.find({ belongs_to: id });
+  let allBim = await Bimester.find({ belongs_to: req.body.user_id });
   let puntos;
-	if (allBim) {
-		if(allBim >2){
-				let x = (allBim[allBim.length -2].co2_emitido - allBim[allBim.length -1].co2_emitido) /6;
-				puntos = x;
-		}else{
-			puntos = 1;
-		}
-		let u = await User.findOneAndUpdate({_id : req.body.user_id},{$inc:{points:puntos}})
+  if (allBim) {
+    if (allBim > 2) {
+      let x =
+        (allBim[allBim.length - 2].co2_emitido -
+          allBim[allBim.length - 1].co2_emitido) /
+        6;
+      puntos = x;
+    } else {
+      puntos = 1;
+    }
+    let u = await User.findOneAndUpdate(
+      { _id: req.body.user_id },
+      { $inc: { points: puntos } }
+    );
 
     console.log("error caching this");
   }
