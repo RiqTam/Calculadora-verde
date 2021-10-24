@@ -13,7 +13,7 @@ export default function NewReport() {
     const [agua, setAgua] = useState(10000)
 	let auth = useAuth();
 
-    async function addReport() {
+    function addReport() {
         const report={
             gasto_luz: luz,
             gasto_gasolina: gasolina,
@@ -21,9 +21,10 @@ export default function NewReport() {
             gasto_agua: agua,
         } 
         console.log(report)
-        await auth.request("bimester/newBimester", "POST", report)
+        auth.request("bimester/newBimester", "POST", report)
 		.then(res => {
 			console.log(res.data);
+            console.log("fdsafasdfs");
             history.push("/Fingerprint");
 		})
         .catch((error) =>{
