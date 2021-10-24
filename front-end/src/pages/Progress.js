@@ -7,7 +7,7 @@ import {  Line } from 'react-chartjs-2';
 import CircleGraph from '../components/CircleGraph';
 
 function calculatePercentage(val) {
-	const perc = val/300;
+	const perc = val/3000;
 	return perc>1?100:parseFloat(perc*100).toFixed(2);
 }
 export default function Progress() {
