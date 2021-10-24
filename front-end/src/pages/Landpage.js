@@ -38,8 +38,8 @@ export default function Landpage() {
 								<div className='px-5 pt-20 flex-col space-y-5 h-auto 
 												xl:pt-0 xl:px-20'>
 									<Title title="Iniciar Sesion" className="xl:mb-16"/>
-									<Input label="Número de Telefono" placeholder="xxxxxxxxxxx" value={phone} onChange={setPhone} />
-									<Input label="Contraseña" placeholder="Ingresa tu contraseña" value={password} onChange={setPassword}/>
+									<Input type="text" label="Número de Telefono" placeholder="xxxxxxxxxxx" value={phone} onChange={setPhone} />
+									<Input type="password" label="Contraseña" placeholder="Ingresa tu contraseña" value={password} onChange={setPassword}/>
 									<Label label="¿Olvidaste tu contraseña?" className ="text-green text-right" />
 									<Button label="Iniciar Sesion" className="mt-10" onClick={login}/>
 								</div>
