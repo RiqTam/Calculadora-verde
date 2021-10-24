@@ -1,5 +1,6 @@
 import React from 'react'
 import { Switch } from 'react-router-dom'
+import Exchange from '../pages/Exchange'
 import Fingerprint from '../pages/Fingerprint'
 import NewReport from '../pages/NewReport'
 import Progress from '../pages/Progress'
@@ -25,6 +26,9 @@ export default function UserRoutes() {
 				</PrivateRoute>
 				<PrivateRoute path="/Home">
 					<Welcome />
+				</PrivateRoute>
+				<PrivateRoute path="/Exchange">
+					<Exchange />
 				</PrivateRoute>
 				<PrivateRoute path="/">
 					<Welcome />

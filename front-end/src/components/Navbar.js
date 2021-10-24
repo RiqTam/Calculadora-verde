@@ -39,7 +39,7 @@ export default function Navbar() {
             <ul className="select-none hidden m-auto w-full pr-10 lg:flex">
                 <div className="mr-0 flex m-auto space-x-10">
                     <Label label={`Dinocoins: ${points}`}  className=" m-auto text-green-dark"/>
-                    <Link to="/#">
+                    <Link to="/Exchange">
                         <img src={dinocoin} alt="Dinocoin"/>
                     </Link>
                     <Link to={"/Report"}>
