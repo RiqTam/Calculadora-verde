@@ -38,8 +38,8 @@ export default function Landpage() {
 								<div className='px-5 pt-20 flex-col space-y-5 h-auto 
 												xl:pt-0 xl:px-20'>
 									<Title title="Iniciar Sesion" className="xl:mb-16"/>
-									<Input label="Número de Telefono" placeholder="xxxxxxxxxxx" value={phone} onChange={setPhone} />
-									<Input label="Contraseña" placeholder="Ingresa tu contraseña" value={password} onChange={setPassword}/>
+									<Input type="text" label="Número de Telefono" placeholder="xxxxxxxxxxx" value={phone} onChange={setPhone} />
+									<Input type="password" label="Contraseña" placeholder="Ingresa tu contraseña" value={password} onChange={setPassword}/>
 									<Label label="¿Olvidaste tu contraseña?" className ="text-green text-right" />
 									<Button label="Iniciar Sesion" className="mt-10" onClick={login}/>
 								</div>
@@ -55,7 +55,7 @@ export default function Landpage() {
 										algunos consejos enlazados a las soluciones que BBVA ofrece como parte de 
 										su cartera de servicios para la sustentabilidad.
 									</p>
-									<Button label="Iniciar Sesion" onClick={()=>setShowLogin(true)}/>
+									<Button label="Iniciar Sesion" onClick={()=>setShowLogin(true)} size={"w-auto"}/>
 								</div>
 						}
 					<div className='m-auto mb-10'>

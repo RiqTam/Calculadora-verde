@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { View } from 'react-native';
 import { Button } from '../components';
 import Title from '../components/Title';
-import LoginContext from '../context/LoginContext';
+import LoginContext from '../context/AuthContext';
 import tw from '../tailwind';
 
 export default function Landpage() {

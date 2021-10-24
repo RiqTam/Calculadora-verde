@@ -19,7 +19,6 @@ export default function useProviderAuth() {
 	const signin = (user, callback) => {
         api("user/login", "POST", user)
 		.then(res => {
-			console.log(res.data);
 			setUser(res.data);
 			callback();
 		})

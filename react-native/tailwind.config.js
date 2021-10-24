@@ -15,7 +15,11 @@ module.exports = {
           DEFAULT: '#E72C2C',
           dark: '#710808'
         },
-        textLight: '#c5c5c5'
+        textLight: '#c5c5c5',
+        yellow:{
+          DEFAULT: '#F5F867',
+          dark: '#9D9700'
+        }
       },
       borderWidth:{
         '20': '20px'
