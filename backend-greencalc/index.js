@@ -5,6 +5,10 @@ const dotenv = require('dotenv');
 const authRoute = require('./routes/auth');
 const postRoute = require('./routes/posts')
 const bimesterRoute = require('./routes/bimester/bimester')
+const reportRoute = require('./routes/report/report')
+const cors = require('cors')
+
+
 
 dotenv.config()
 
@@ -17,10 +21,12 @@ mongoose.connect(process.env.DB_CONNECT,(err)=>{
 })
 
 app.use(express.json())
+app.use(cors());
 
 app.use('/api/user',authRoute)
 app.use('/api/post',postRoute)
 app.use('/api/bimester',bimesterRoute)
+app.use('api/report/',reportRoute)
 
 app.get('/',(req,res)=>{
 	res.json({ message: "Server on" })
