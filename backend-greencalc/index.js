@@ -23,13 +23,15 @@ mongoose.connect(process.env.DB_CONNECT,(err)=>{
 app.use(express.json())
 app.use(cors());
 
+app.use(express.static('public'));
+
 app.use('/api/user',authRoute)
 app.use('/api/post',postRoute)
 app.use('/api/bimester',bimesterRoute)
-app.use('api/report/',reportRoute)
+app.use('/api/report/',reportRoute)
 
-app.get('/',(req,res)=>{
-	res.json({ message: "Server on" })
-});
+app.get('/api/',(req,res)=>{
+	res.send(200).json({message:'welcome to dinohacks server'})
+})
 
 app.listen(8080,()=> console.log('Server up.'))
