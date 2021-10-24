@@ -15,11 +15,13 @@ export default function useProviderAuth() {
 			setTimeout(callback, 100);
 		}
 	};
+	const setPoints =(points) =>{
+		setUser({...user, points});
+	}
 
 	const signin = (user, callback) => {
         api("user/login", "POST", user)
 		.then(res => {
-			console.log(res.data);
 			setUser(res.data);
 			callback();
 		})
@@ -39,6 +41,7 @@ export default function useProviderAuth() {
 
 	return {
 		user,
+		setPoints,
 		signin,
 		signout,
 		request

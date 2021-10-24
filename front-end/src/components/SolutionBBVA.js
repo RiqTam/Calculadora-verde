@@ -23,7 +23,7 @@ export default function SolutionBBVA(props) {
                     {props.cuatro}
                 </li>
             </ul>
-            <Button label="Visita el sitio" size="w-auto"/>
+            <Button label="Visita el sitio" size="w-auto" onClick={()=>window.open(props.link,'_blank')}/>
             <br/>
         </div>
     )

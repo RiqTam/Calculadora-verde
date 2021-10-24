@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
@@ -6,24 +6,38 @@ import Button from './Button';
 import Title from './Title';
 import { Icon } from '@iconify/react';
 import dinocoin from '../images/Dinocoin.png';
+import Label from './Label';
 
 export default function Navbar() {
     const [showMenu, setShowMenu] = useState(false);
     const history = useHistory();
 	const auth = useAuth();
     
+    useEffect(() => {
+		auth.request("reports/getPoints","POST")
+		.then(res => {
+            console.log("fds");
+            auth.setPoints(res.data);
+		})
+        .catch((error) =>{
+			console.log(error);
+        });
+	}, [history])
+
 	const logout = () => {
         auth.signout(()=> history.push("/"));
 	};
+    if(auth.user.points==null) return ''
     return (
         <nav className="flex fixed top-0 w-full p-5 pl-10 bg-white-dark">
-            <Link to="/">
+            <Link to="/Home">
                 <Title className="font-black ml-0" title="Dinocalculadora" textSize="text-2xl">Dinocalculadora</Title>
-                <p>{auth.user.name}</p>
+                <Label label={auth.user.name} />
             </Link>
             <ul className="select-none hidden m-auto w-full pr-10 lg:flex">
                 <div className="mr-0 flex m-auto space-x-10">
-                    <Link>
+                    <Label label={`Dinocoins: ${parseFloat(auth.user.points).toFixed(2)}`}  className=" m-auto text-green-dark"/>
+                    <Link to="/Exchange">
                         <img src={dinocoin} alt="Dinocoin"/>
                     </Link>
                     <Link to={"/Report"}>
