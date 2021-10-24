@@ -11,7 +11,9 @@ export default function Input(props) {
 						{ fontFamily: 'Montserrat',  ...props.style})} 
 						onBlur={()=>setBorderColor('border-gray-500')}
 						onFocus={()=>setBorderColor('border-green-light')}
-						placeholder={props.placeholder}/>
+						placeholder={props.placeholder} value={props.value} 
+						onChangeText={props.onChangeText}
+						secureTextEntry={props.password}/>
 		</View>
 	)
 }

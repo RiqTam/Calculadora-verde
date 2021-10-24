@@ -1,11 +1,25 @@
-import React, { useContext } from 'react'
-import { View, Text } from 'react-native'
+import React, {  useState } from 'react'
+import { View } from 'react-native'
 import { Button, H1, Input, Span } from '../components'
-import LoginContext from '../context/LoginContext';
+import useAuth from '../hooks/useAuth';
 import tw from '../tailwind'
 
-export default function Login() {
-	const {logged, setLogged} = useContext(LoginContext);
+export default function Login({setshowLogin}) {
+	const auth = useAuth();
+	const [phone, setPhone] = useState('5541744839');
+	const [password, setPassword] = useState('abdiel123');
+
+
+	function login() {
+		const user={
+			phone,
+			password
+		}
+		auth.signin(user, () => {
+			setshowLogin(false);
+		});
+	};
+
 	return (
 		<>
 			<View style={tw`w-full pl-5`}>
@@ -15,13 +29,13 @@ export default function Login() {
 
 				<H1 style={tw`m-5 mt-20`}>Iniciar Sesión</H1>
 				<View style={tw`m-3 w-full`}>
-					<Input label="Número de Cuenta" placeholder="Ingresa tu No. Cuenta"/>
+					<Input label="Número de Telefono" placeholder="Ingresa tu No. Telefono" value={phone} onChangeText={setPhone}/>
 				</View>
 				<View style={tw`m-3 mb-10 w-full`}>
-					<Input label="Password" placeholder="Ingresa tu password" />
+					<Input label="Password" placeholder="Ingresa tu password" value={password} onChangeText={setPassword} password={true}/>
 					<Span style={tw`mt-3 text-right`}>¿Olvidaste tu contraseña?</Span>
 				</View>
-				<Button label="Iniciar Sesión" style={tw`w-full `} onPress={()=>setLogged(true)} />
+				<Button label="Iniciar Sesión" style={tw`w-full `} onPress={login} />
 				<Span>¿Aún no tienes cuenta?</Span>
 				<Span>Registrate ahora</Span>
 			</View>

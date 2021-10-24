@@ -1,20 +1,19 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useMemo, useState } from 'react';
-import { View } from 'react-native';
+import React, { useContext, useEffect, useState } from 'react';
+import { Text, View } from 'react-native';
 import tw from './tailwind';
 import { setCustomText } from 'react-native-global-props';
 import {useFonts} from 'expo-font';
 import Login from './screens/Login';
 import Navigator from './navigation/Navigator';
-import LoginContext from './context/LoginContext';
+import AuthContext from './context/AuthContext';
+import useAuth from './hooks/useAuth';
+import useProviderAuth from "./hooks/useProviderAuth";
 
 export default function App() {
-  const [logged, setLogged] = useState(false);
-  const value = useMemo(
-    () => ({ logged, setLogged }), 
-    [logged]
-  );
-
+  const [showLogin, setshowLogin] = useState(true);
+	const auth = useAuth();
+  const providerValue = useProviderAuth();
     // font loading
     let [fontsLoaded] = useFonts({
       Montserrat: require('./assets/fonts/Montserrat-Regular.otf'),
@@ -33,16 +32,19 @@ export default function App() {
     }); 
 
   return (
-      <LoginContext.Provider value={value}>
-        {logged?
-          <Navigator logout={()=>setLogged(false)}/>
+      <AuthContext.Provider value={providerValue}>
+        {!showLogin?
+          <Navigator setshowLogin={setshowLogin}/>
         :
           <View style={tw`mt-10`}>
-            <Login login={()=>setLogged(true)} />
+            <Login setshowLogin={setshowLogin} />
+            <Text>
+              {JSON.stringify(auth.user)}
+            </Text>
             <StatusBar style="auto" />
           </View>
         }
-      </LoginContext.Provider>
+      </AuthContext.Provider>
   );   
 
 
