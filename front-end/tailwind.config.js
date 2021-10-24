@@ -11,6 +11,9 @@ module.exports = {
       },
       minHeight:{
         '1/2': '50%'
+      },
+      height:{
+        '100': '6rem'
       }
     },
     colors:{
