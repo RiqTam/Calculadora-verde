@@ -29,8 +29,7 @@ router.post("/newBimester", verify, async (req, res) => {
     belongs_to: req.body.user_id,
   });
   const savedBimester = await bim.save();
-	let id = req.body.user_id
-	Bimester.find({ belongs_to: id }, (err, doc) => {
+	let allBim = await Bimester.find({ belongs_to: id }, (err, doc) => {
 		if(err){
 			res.status(400).json({message:'Error while getting points'})
 		}
@@ -50,6 +49,7 @@ router.post("/newBimester", verify, async (req, res) => {
 		points = u.points + points;
 		User.findOneAndUpdate({ _id: id }, { points: points });
 	});
+	console.log(allBim)
   if (!savedBimester) {
     console.log("Error saving bimester");
     res.status(400).json({ message: "Error creating bimester record" });
