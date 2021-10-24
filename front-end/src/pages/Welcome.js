@@ -32,22 +32,22 @@ export default function Welcome() {
 	}, [auth])
 
     function selectWorld() {
-        if(current==null) return world;
+        if(current==null)return ''
         if (current>=50) {
-            return world100
-        } else if(current>=30) {
-            return world50
-        }else{
-            return world
+            return <source src={world100} type="video/mp4"/>
         }
+        if(current>=30) {
+            return <source src={world50} type="video/mp4"/>
+        }
+        if(current>=0)
+            return <source src={world} type="video/mp4"/>
     }
-
     return (
         <div className="bg-white-dark h-screen flex-col flex">
             <div className="flex flex-col md:flex-row h-full">
                 <section className="m-auto w-full md:w-3/5 p-16 pt-40 pb-0 md:pl-20 xl:px-60  flex-col  h-full">
                     <video autoPlay loop muted  playsInline  className=" w-full h-auto rounded-2xl">
-                        <source src={selectWorld()} type="video/mp4"/>
+                        {selectWorld()}
                         Your Browser does not support video tag
                     </video>
 
