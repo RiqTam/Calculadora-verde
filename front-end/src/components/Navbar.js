@@ -5,6 +5,7 @@ import useAuth from '../hooks/useAuth';
 import Button from './Button';
 import Title from './Title';
 import { Icon } from '@iconify/react';
+import dinocoin from '../images/Dinocoin.png';
 
 export default function Navbar() {
     const [showMenu, setShowMenu] = useState(false);
@@ -22,6 +23,9 @@ export default function Navbar() {
             </Link>
             <ul className="select-none hidden m-auto w-full pr-10 lg:flex">
                 <div className="mr-0 flex m-auto space-x-10">
+                    <Link>
+                        <img src={dinocoin} alt="Dinocoin"/>
+                    </Link>
                     <Link to={"/Report"}>
                         <Button label="Agregar Reporte"/>
                     </Link>
