@@ -16,12 +16,14 @@ function calculatePercentage(val) {
 
 export default function Welcome() {
     const auth = useAuth();
+	const [bimesters, setBimesters] = useState([]);
 	const [current, setCurrent] = useState(null);
 
 	useEffect(() => {
 		auth.request("bimester/getMyBimester","POST")
 		.then(res => {
 			console.log(res.data);
+			setBimesters(res.data);
 			setCurrent(calculatePercentage(res.data[res.data.length-1].co2_emitido));
 		})
         .catch((error) =>{
@@ -55,8 +57,13 @@ export default function Welcome() {
                     <Title title={`¡Hola ${auth.user.name}, mi nombre es Dino!`} className="text-green-dark mb-10" />
                     <Dialog dialog="Te ayudaré a reducir tus emisiones de CO2" />
                     <Dialog dialog="El planeta que ves a la izquierda cambiará de acuerdo con tus emisiones de CO2" />
-                    <Dialog dialog="Parece que aún no tenemos información para calcular tu huella..." className="mt-5"/>
-                    <Dialog dialog="¿Por qué no agregas tus datos bimestrales para calcularla?" className="mt-5" />
+                    {bimesters.length<1?
+                        <>
+                            <Dialog dialog="Parece que aún no tenemos información para calcular tu huella..." className="mt-5"/>
+                            <Dialog dialog="¿Por qué no agregas tus datos bimestrales para calcularla?" className="mt-5" />                   
+                        </>
+                    :''}
+
                     <div className='flex '>
                         <img src={welcomeDino} alt="Welcome Dino" className="m-auto w-52 md:w-96"/>
                         <Link to={"/Report"}>

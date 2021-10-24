@@ -7,7 +7,7 @@ import {  Line } from 'react-chartjs-2';
 import CircleGraph from '../components/CircleGraph';
 
 function calculatePercentage(val) {
-	const perc = val/3000;
+	const perc = val/300;
 	return perc>1?100:parseFloat(perc*100).toFixed(2);
 }
 export default function Progress() {
@@ -50,7 +50,16 @@ export default function Progress() {
 		},
 		mantainAspectRatio: true,
 	};
-	
+
+	function renderCircleGraph(percentage, id) {
+		if (percentage>66) {
+			return <CircleGraph percentage={percentage} from={"#710808"} to={"#F12C2C"} id={id}/>
+		} else if(percentage>33) {
+			return <CircleGraph percentage={percentage} from={'#9D9700'} to={'#F5F867'} id={id}/>
+		}else{
+			return <CircleGraph percentage={percentage} from={"#014A00"} to={"#7CC72D"} id={id}/>
+		}	
+	}
 	if(bimesters.length<1) return ''
 	const percentageCurrent = calculatePercentage(current);
 	const percentageLast = calculatePercentage(last);
@@ -70,10 +79,10 @@ export default function Progress() {
 						<Title title={`Tu huella actual es de ${current}Kg CO₂ - ${percentageCurrent}`} className=" mt-10 text-base" />	
 					</div>
 					<div className='w-1/4 m-auto'>
-						<CircleGraph  from={"#014A00"} to={"#7CC72D" } percentage={percentageCurrent} id="actual"/>
+						{renderCircleGraph(percentageCurrent, "actual")}
 					</div>
 					<div className='w-1/5 m-auto'>
-						<CircleGraph  from={"#710808"} to={"#F12C2C" } percentage={percentageLast} id="before"/>
+						{renderCircleGraph(percentageLast, "last")}
 					</div>
 				</div>
 			</div>

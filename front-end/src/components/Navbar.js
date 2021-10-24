@@ -6,10 +6,11 @@ import Button from './Button';
 import Title from './Title';
 import { Icon } from '@iconify/react';
 import dinocoin from '../images/Dinocoin.png';
+import Label from './Label';
 
 export default function Navbar() {
     const [showMenu, setShowMenu] = useState(false);
-    const [points, setPoints] = useState(0);
+    const [points, setPoints] = useState(null);
     const history = useHistory();
 	const auth = useAuth();
     
@@ -18,6 +19,7 @@ export default function Navbar() {
 		.then(res => {
 			console.log(res.data);
             setPoints(res.data);
+            auth.setPoints(res.data);
 		})
         .catch((error) =>{
 			console.log(error);
@@ -27,16 +29,17 @@ export default function Navbar() {
 	const logout = () => {
         auth.signout(()=> history.push("/"));
 	};
+    if(points==null) return ''
     return (
         <nav className="flex fixed top-0 w-full p-5 pl-10 bg-white-dark">
-            <Link to="/">
+            <Link to="/Home">
                 <Title className="font-black ml-0" title="Dinocalculadora" textSize="text-2xl">Dinocalculadora</Title>
-                <p>{auth.user.name}</p>
+                <Label label={auth.user.name} />
             </Link>
             <ul className="select-none hidden m-auto w-full pr-10 lg:flex">
                 <div className="mr-0 flex m-auto space-x-10">
-                    <p>{points}</p>
-                    <Link>
+                    <Label label={`Dinocoins: ${points}`}  className=" m-auto text-green-dark"/>
+                    <Link to="/#">
                         <img src={dinocoin} alt="Dinocoin"/>
                     </Link>
                     <Link to={"/Report"}>

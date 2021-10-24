@@ -20,11 +20,9 @@ export default function NewReport() {
             gasto_gas: gas,
             gasto_agua: agua,
         } 
-        console.log(report)
         auth.request("bimester/newBimester", "POST", report)
 		.then(res => {
 			console.log(res.data);
-            console.log("fdsafasdfs");
             history.push("/Fingerprint");
 		})
         .catch((error) =>{

@@ -23,6 +23,9 @@ export default function UserRoutes() {
 				<PrivateRoute path="/Tips">
 					<Tips />
 				</PrivateRoute>
+				<PrivateRoute path="/Home">
+					<Welcome />
+				</PrivateRoute>
 				<PrivateRoute path="/">
 					<Welcome />
 				</PrivateRoute>
