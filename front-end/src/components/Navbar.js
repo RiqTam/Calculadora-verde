@@ -10,26 +10,24 @@ import Label from './Label';
 
 export default function Navbar() {
     const [showMenu, setShowMenu] = useState(false);
-    const [points, setPoints] = useState(null);
     const history = useHistory();
 	const auth = useAuth();
     
     useEffect(() => {
 		auth.request("reports/getPoints","POST")
 		.then(res => {
-			console.log(res.data);
-            setPoints(res.data);
+            console.log("fds");
             auth.setPoints(res.data);
 		})
         .catch((error) =>{
 			console.log(error);
         });
-	}, [auth])
+	}, [history])
 
 	const logout = () => {
         auth.signout(()=> history.push("/"));
 	};
-    if(points==null) return ''
+    if(auth.user.points==null) return ''
     return (
         <nav className="flex fixed top-0 w-full p-5 pl-10 bg-white-dark">
             <Link to="/Home">
@@ -38,7 +36,7 @@ export default function Navbar() {
             </Link>
             <ul className="select-none hidden m-auto w-full pr-10 lg:flex">
                 <div className="mr-0 flex m-auto space-x-10">
-                    <Label label={`Dinocoins: ${points}`}  className=" m-auto text-green-dark"/>
+                    <Label label={`Dinocoins: ${parseFloat(auth.user.points).toFixed(2)}`}  className=" m-auto text-green-dark"/>
                     <Link to="/Exchange">
                         <img src={dinocoin} alt="Dinocoin"/>
                     </Link>

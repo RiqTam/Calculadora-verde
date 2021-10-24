@@ -19,7 +19,6 @@ export default function Progress() {
 	useEffect(() => {
 		auth.request("bimester/getMyBimester","POST")
 		.then(res => {
-			console.log(res.data);
 			setBimesters(res.data);
 			setCurrent(parseFloat(res.data[res.data.length-1].co2_emitido).toFixed(2));
 			setLast(parseFloat(res.data[res.data.length-2].co2_emitido).toFixed(2));

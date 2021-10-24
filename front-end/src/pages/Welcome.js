@@ -22,7 +22,6 @@ export default function Welcome() {
 	useEffect(() => {
 		auth.request("bimester/getMyBimester","POST")
 		.then(res => {
-			console.log(res.data);
 			setBimesters(res.data);
 			setCurrent(calculatePercentage(res.data[res.data.length-1].co2_emitido));
 		})
@@ -32,8 +31,8 @@ export default function Welcome() {
 
 	}, [auth])
 
-    if(current==null) return '';
     function selectWorld() {
+        if(current==null) return world;
         if (current>=50) {
             return world100
         } else if(current>=30) {

@@ -14,7 +14,6 @@ export default function Tips() {
 		auth.request("bimester/getMyBimester","POST")
 		.then(res => {
 			setBimester(res.data[res.data.length-1]);
-			console.log(res.data[res.data.length-1]);
 		})
         .catch((error) =>{
 			console.log(error);
@@ -25,7 +24,7 @@ export default function Tips() {
 	if(bimester==null) return '';
 	return (
 		<div className='p-32'>
-			<Title title={"Consejos"} />
+			<Title title={"Consejos"} className={"mb-5"}/>
 			{bimester.gasto_luz>=1000?
 				<Dropdown label="Electricidad" 
 					description="Aquí hay 3 posibles soluciones que pueden ayudar a tu empresa 
@@ -94,17 +93,19 @@ export default function Tips() {
 			<SolutionBBVA label="Cartas de crédito de importación sostenibles:" 
 				solution="Permite adquirir mercancía, maquinaria y equipo verde."
 				uno="Paneles solares" dos="Equipos y motores eléctricos" tres="Generadores eólicos"
-				cuatro="Luces LED">
+				cuatro="Luces LED" link="https://www.bbva.mx/empresas/productos/comercio-internacional/importacion/carta-de-credito-de-importacion.html">
 			</SolutionBBVA>
 
 			<SolutionBBVA label="Préstamo verde:" 
 				solution="Ofrece financiamiento para proyectos o activos sostenibles."
-				uno="Parques eólicos" dos="Sistemas fotovoláticos" tres="Calentadores solares de agua">
+				uno="Parques eólicos" dos="Sistemas fotovoláticos" tres="Calentadores solares de agua"
+				link="https://www.bbva.mx/empresas/productos/financiamiento/creditos-a-corto-y-largo-plazo/credito-refaccionario.html">
 			</SolutionBBVA>
 
 			<SolutionBBVA label="Préstamo vinculado a indicadores de sustentabilidad (KPI Linked LOAN):" 
 				solution="Crédito vinculado al logro de objetivos con impacto positivo en el medio ambiente."
-				uno="Reducción de plásticos" dos="Gestión energética" tres="Reducción de uso de agua y residuos">
+				uno="Reducción de plásticos" dos="Gestión energética" tres="Reducción de uso de agua y residuos"
+				link="https://www.bbva.mx/empresas/productos/financiamiento/creditos-a-corto-y-largo-plazo/credito-simple.html">
 			</SolutionBBVA>
 		</div>
 	)

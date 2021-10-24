@@ -22,7 +22,14 @@ export default function NewReport() {
         } 
         auth.request("bimester/newBimester", "POST", report)
 		.then(res => {
-			console.log(res.data);
+            auth.request("reports/getPoints","POST")
+            .then(res => {
+                console.log(res.data);
+                auth.setPoints(res.data);
+            })
+            .catch((error) =>{
+                console.log(error);
+            });
             history.push("/Fingerprint");
 		})
         .catch((error) =>{
