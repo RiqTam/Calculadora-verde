@@ -7,6 +7,7 @@ import useAuth from '../hooks/useAuth';
 import welcomeDino from '../images/welcomeDino.png';
 import welcomeImg from '../images/welcomeImg.png';
 const world = require(`../images/world100.mp4`).default;
+const world50 = require(`../images/world50.mp4`).default;
 
 export default function Welcome() {
     const auth = useAuth();
@@ -16,7 +17,7 @@ export default function Welcome() {
             <div className="flex flex-col md:flex-row h-full">
                 <section className="m-auto w-full md:w-3/5 p-16 pt-40 pb-0 md:pl-20 xl:px-60  flex-col  h-full">
                     <video autoPlay loop muted  playsInline  className=" w-full h-auto rounded-2xl">
-                        <source src={world} type="video/mp4"/>
+                        <source src={world50} type="video/mp4"/>
                         Your Browser does not support video tag
                     </video>
 
