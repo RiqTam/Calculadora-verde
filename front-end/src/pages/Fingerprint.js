@@ -3,9 +3,11 @@ import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Button from '../components/Button'
 import CircleGraph from '../components/CircleGraph';
+import Dialog from '../components/Dialog';
 import Title from '../components/Title'
 import useAuth from '../hooks/useAuth';
 import happyDino from '../images/happyDino.png';
+import sadDino from '../images/sadDino.png';
 
 function calculatePercentage(val) {
 	const perc = val/300;
@@ -76,8 +78,19 @@ export default function Fingerprint() {
 						</div>
 					</div>
 				</div>
-				<div className="flex m-auto">
-					<img src={happyDino} alt="happy Dino" className="m-auto" />
+				<div className="flex-col m-auto">
+					{percentageCurrent<=30?
+						<>
+							<Dialog dialog={"Bien hecho! sigue así"} />
+							<img src={happyDino} alt="happy Dino" className="m-auto" />				
+						</>
+					:
+						<>
+							<Dialog dialog={"Yo te digo como , hay soluciones"} />
+							<img src={sadDino} alt="sad Dino" className="m-auto" />
+						</>
+					}
+
 				</div>
 			</div>
 			<h3 className="text-3xl py-1">¡Felicitación 1!</h3>

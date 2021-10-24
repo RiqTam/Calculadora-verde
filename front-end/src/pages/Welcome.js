@@ -2,11 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import Button from '../components/Button'
 import Dialog from '../components/Dialog';
-import Label from '../components/Label';
 import Title from '../components/Title';
 import useAuth from '../hooks/useAuth';
 import welcomeDino from '../images/welcomeDino.png';
-import welcomeImg from '../images/welcomeImg.png';
 const world = require(`../images/world30.mp4`).default;
 const world50 = require(`../images/world50.mp4`).default;
 const world100 = require(`../images/world100.mp4`).default;
@@ -18,14 +16,12 @@ function calculatePercentage(val) {
 
 export default function Welcome() {
     const auth = useAuth();
-	const [bimesters, setBimesters] = useState([]);
 	const [current, setCurrent] = useState(null);
 
 	useEffect(() => {
 		auth.request("bimester/getMyBimester","POST")
 		.then(res => {
 			console.log(res.data);
-			setBimesters(res.data);
 			setCurrent(calculatePercentage(res.data[res.data.length-1].co2_emitido));
 		})
         .catch((error) =>{
