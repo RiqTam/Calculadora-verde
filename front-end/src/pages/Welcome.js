@@ -1,37 +1,73 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import Button from '../components/Button'
+import Dialog from '../components/Dialog';
 import Label from '../components/Label';
 import Title from '../components/Title';
 import useAuth from '../hooks/useAuth';
 import welcomeDino from '../images/welcomeDino.png';
 import welcomeImg from '../images/welcomeImg.png';
-const world = require(`../images/world100.mp4`).default;
+const world = require(`../images/world30.mp4`).default;
 const world50 = require(`../images/world50.mp4`).default;
+const world100 = require(`../images/world100.mp4`).default;
+
+function calculatePercentage(val) {
+	const perc = val/300;
+	return perc>1?100:parseFloat(perc*100).toFixed(2);
+}
 
 export default function Welcome() {
     const auth = useAuth();
+	const [bimesters, setBimesters] = useState([]);
+	const [current, setCurrent] = useState(null);
+
+	useEffect(() => {
+		auth.request("bimester/getMyBimester","POST")
+		.then(res => {
+			console.log(res.data);
+			setBimesters(res.data);
+			setCurrent(calculatePercentage(res.data[res.data.length-1].co2_emitido));
+		})
+        .catch((error) =>{
+			console.log(error);
+        });
+
+	}, [auth])
+
+    if(current==null) return '';
+    function selectWorld() {
+        if (current>=50) {
+            return world100
+        } else if(current>=30) {
+            return world50
+        }else{
+            return world
+        }
+    }
 
     return (
         <div className="bg-white-dark h-screen flex-col flex">
             <div className="flex flex-col md:flex-row h-full">
                 <section className="m-auto w-full md:w-3/5 p-16 pt-40 pb-0 md:pl-20 xl:px-60  flex-col  h-full">
                     <video autoPlay loop muted  playsInline  className=" w-full h-auto rounded-2xl">
-                        <source src={world50} type="video/mp4"/>
+                        <source src={selectWorld()} type="video/mp4"/>
                         Your Browser does not support video tag
                     </video>
 
                 </section>
-                <section className=" flex-col w-full md:w-2/5  pt-40 px-10">
-                        <Title title={`Bienvenido(a), ${auth.user.name}`} className="text-green-dark mb-10" />
-                        <Label label="Parece que aún no tenemos información para calcular tu huella..." 
-                                className="md:text-2xl"/>
-                        <Label label="¿Por qué no agregas tus datos bimestrales para calcularla?" 
-                                className="md:text-2xl"/>
+                <section className=" flex-col w-full md:w-2/5  pt-32 pr-20">
+                    <Title title={`¡Hola ${auth.user.name}, mi nombre es Dino!`} className="text-green-dark mb-10" />
+                    <Dialog dialog="Te ayudaré a reducir tus emisiones de CO2" />
+                    <Dialog dialog="El planeta que ves a la izquierda cambiará de acuerdo con tus emisiones de CO2" />
+                    <Dialog dialog="Parece que aún no tenemos información para calcular tu huella..." className="mt-5"/>
+                    <Dialog dialog="¿Por qué no agregas tus datos bimestrales para calcularla?" className="mt-5" />
+                    <div className='flex '>
+                        <img src={welcomeDino} alt="Welcome Dino" className="m-auto w-52 md:w-96"/>
                         <Link to={"/Report"}>
-                            <Button label="Agregar reporte" className={"mt-10"} size={"w-auto"}/>
+                                <Button label="Agregar reporte" classNameParent={" mr-0 m-auto mt-10"} size={"w-auto"}/>
                         </Link>
-                    <img src={welcomeDino} alt="Welcome Dino" className="m-auto w-52 md:w-96"/>
+                    </div>
+
                 </section>
             </div>
         </div>
