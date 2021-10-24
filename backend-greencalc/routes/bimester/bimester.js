@@ -12,26 +12,6 @@ function co2(luz, gasolina, gas, agua) {
   return co2_emitido;
 }
 function countPoints(id,res) {
-  Bimester.find({ belongs_to: id }, (err, doc) => {
-	  if(err){
-		  res.status(400).json({message:'Error while getting points'})
-	  }
-	  let points = 0;
-    if (doc.length >= 2) {
-      var calcPoints =
-        (doc[doc.length - 2].co2_emitido - doc[doc.length - 1].co2_emitido) / 6;
-      if (calcPoints > 0) {
-        points = calcPoints;
-      } else {
-        points = 1;
-      }
-    } else {
-      points = 1;
-    }
-    let u = User.find({ _id: id });
-    points = u.points + points;
-    User.findOneAndUpdate({ _id: id }, { points: points });
-  });
 }
 
 router.post("/newBimester", verify, async (req, res) => {
@@ -49,7 +29,27 @@ router.post("/newBimester", verify, async (req, res) => {
     belongs_to: req.body.user_id,
   });
   const savedBimester = await bim.save();
-  countPoints(id,res);
+	let id = req.body.user_id
+	Bimester.find({ belongs_to: id }, (err, doc) => {
+		if(err){
+			res.status(400).json({message:'Error while getting points'})
+		}
+		let points = 0;
+		if (doc.length >= 2) {
+			var calcPoints =
+				(doc[doc.length - 2].co2_emitido - doc[doc.length - 1].co2_emitido) / 6;
+			if (calcPoints > 0) {
+				points = calcPoints;
+			} else {
+				points = 1;
+			}
+		} else {
+			points = 1;
+		}
+		let u = User.find({ _id: id });
+		points = u.points + points;
+		User.findOneAndUpdate({ _id: id }, { points: points });
+	});
   if (!savedBimester) {
     console.log("Error saving bimester");
     res.status(400).json({ message: "Error creating bimester record" });

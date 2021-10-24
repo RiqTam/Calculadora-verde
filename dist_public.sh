@@ -1,5 +1,5 @@
 #! /bin/bash
 
-cp -r ./front-end/dist/ ./backend-greencalc/public/
+cp -r ./front-end/build/ ./backend-greencalc/public/
 
 

@@ -28,7 +28,7 @@ app.use(express.static('public'));
 app.use('/api/user',authRoute)
 app.use('/api/post',postRoute)
 app.use('/api/bimester',bimesterRoute)
-app.use('/api/report/',reportRoute)
+app.use('/api/reports',reportRoute)
 
 app.get('/api/',(req,res)=>{
 	res.send(200).json({message:'welcome to dinohacks server'})
