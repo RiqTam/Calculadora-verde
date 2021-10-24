@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import ButtonHeader from './ButtonHeader'
 import Title from './Title'
+import { Icon } from '@iconify/react';
 
 export default function NavbarLandpage({setShowLogin}) {
     const [showMenu, setShowMenu] = useState(false);
@@ -15,12 +16,14 @@ export default function NavbarLandpage({setShowLogin}) {
                 </div>
             </ul>
             <div className='flex-col flex w-full md:hidden'>
-                <button className=' m-auto mr-0 mt-0' onClick={()=>setShowMenu(!showMenu)}>Menu</button>
+                <button className=' m-auto mr-0 mt-0' onClick={()=>setShowMenu(!showMenu)}>
+                    <Icon icon="dashicons:menu-alt3" className="text-green-defdark" style={{fontSize: '32px'}}/>
+                </button>   
                 {
                     showMenu?
                         <ul className="select-none flex flex-col m-auto mr-0 text-white bg-green ">
-                            <button className='hover:bg-green-dark' onClick={()=>setShowLogin(false)}>Sobre Nosotros</button>
-                            <button className='hover:bg-green-dark' onClick={()=>setShowLogin(true)}>Iniciar Sesion</button>
+                            <button className='hover:bg-green-dark py-3 px-5 w-full font-semibold' onClick={()=>setShowLogin(false)}>Sobre Nosotros</button>
+                            <button className='hover:bg-green-dark py-3 px-5 w-full font-semibold border-t-2 border-green-dark' onClick={()=>setShowLogin(true)}>Iniciar Sesion</button>
                         </ul>                
                     :''
                 }
