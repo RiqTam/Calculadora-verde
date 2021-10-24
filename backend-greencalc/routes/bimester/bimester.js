@@ -45,9 +45,9 @@ router.post("/newBimester", verify, async (req, res) => {
       { $inc: { points: puntos } }
     );
 
-    console.log("error caching this");
+  }else{
+	  res.status(400).json({message:"Could not get Bimesters from user"})
   }
-  console.log(allBim);
   if (!savedBimester) {
     console.log("Error saving bimester");
     res.status(400).json({ message: "Error creating bimester record" });
