@@ -37,7 +37,7 @@ router.post("/newBimester", verify, async (req, res) => {
 		}else{
 			puntos = 1;
 		}
-		let u = await User.findOneAndUpdate({_id = req.body.user_id},{$inc:{points:puntos}})
+		let u = await User.findOneAndUpdate({_id : req.body.user_id},{$inc:{points:puntos}})
 
     console.log("error caching this");
   }
