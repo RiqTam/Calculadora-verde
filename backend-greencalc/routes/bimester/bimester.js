@@ -11,9 +11,12 @@ function co2(luz, gasolina, gas, agua) {
   co2_emitido += (agua * 1253) / 50000;
   return co2_emitido;
 }
-function countPoints(id) {
+function countPoints(id,res) {
   Bimester.find({ belongs_to: id }, (err, doc) => {
-    let points = 0;
+	  if(err){
+		  res.status(400).json({message:'Error while getting points'})
+	  }
+	  let points = 0;
     if (doc.length >= 2) {
       var calcPoints =
         (doc[doc.length - 2].co2_emitido - doc[doc.length - 1].co2_emitido) / 6;
@@ -46,7 +49,7 @@ router.post("/newBimester", verify, async (req, res) => {
     belongs_to: req.body.user_id,
   });
   const savedBimester = await bim.save();
-  countPoints(id);
+  countPoints(id,res);
   if (!savedBimester) {
     console.log("Error saving bimester");
     res.status(400).json({ message: "Error creating bimester record" });
