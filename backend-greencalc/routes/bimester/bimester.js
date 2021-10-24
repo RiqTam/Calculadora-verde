@@ -36,7 +36,11 @@ router.post("/newBimester", verify, async (req, res) => {
         (allBim[allBim.length - 2].co2_emitido -
           allBim[allBim.length - 1].co2_emitido) /
         6;
-      puntos = x;
+		if(x>=1){
+			puntos = x;
+		}else{
+			puntos = 0;
+		}
     } else {
       puntos = 1;
     }
