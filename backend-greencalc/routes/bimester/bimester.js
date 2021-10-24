@@ -49,7 +49,7 @@ router.post("/newBimester", verify, async (req, res) => {
     belongs_to: req.body.user_id,
   });
   const savedBimester = await bim.save();
-  countPoints(id,res);
+  countPoints(req.body.user_id,res);
   if (!savedBimester) {
     console.log("Error saving bimester");
     res.status(400).json({ message: "Error creating bimester record" });
