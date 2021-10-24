@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "calculadora-verde",
-    "slug": "calculadora-verde",
+    "name": "dinocalculadora",
+    "slug": "dinocalculadora",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
