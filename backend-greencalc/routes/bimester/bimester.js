@@ -31,7 +31,7 @@ router.post("/newBimester", verify, async (req, res) => {
   let allBim = await Bimester.find({ belongs_to: req.body.user_id });
   let puntos;
   if (allBim) {
-    if (allBim > 2) {
+    if (allBim.length >= 2) {
       let x =
         (allBim[allBim.length - 2].co2_emitido -
           allBim[allBim.length - 1].co2_emitido) /
