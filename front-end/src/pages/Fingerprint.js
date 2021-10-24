@@ -23,7 +23,6 @@ export default function Fingerprint() {
 	useEffect(() => {
 		auth.request("bimester/getMyBimester","POST")
 		.then(res => {
-			console.log(res.data);
 			setBimesters(res.data);
 			setCurrent(parseFloat(res.data[res.data.length-1].co2_emitido).toFixed(2));
 			setLast(parseFloat(res.data[res.data.length-2].co2_emitido).toFixed(2));
@@ -38,9 +37,20 @@ export default function Fingerprint() {
 		history.push("/Tips");
 	}
 
+	function renderCircleGraph(percentage, id) {
+		if (percentage>66) {
+			return <CircleGraph percentage={percentage} from={"#710808"} to={"#F12C2C"} id={id}/>
+		} else if(percentage>33) {
+			return <CircleGraph percentage={percentage} from={'#9D9700'} to={'#F5F867'} id={id}/>
+		}else{
+			return <CircleGraph percentage={percentage} from={"#014A00"} to={"#7CC72D"} id={id}/>
+		}	
+	}
+
 	if(bimesters.length<1 ) return '';
 	const percentageCurrent = calculatePercentage(current);
 	const percentageLast = calculatePercentage(last);
+
 	return (
 		<div className='p-32 bg-white-dark'>
 			<Title title={"Mi Huella"} /><br/>
@@ -54,7 +64,7 @@ export default function Fingerprint() {
 							Tu huella actual es <br/>{current}Kg CO₂ - {percentageCurrent}%
 						</p>
 						<div className="m-auto px-20 pt-0 flex">
-							<CircleGraph  from={"#014A00"} to={"#7CC72D" } percentage={percentageCurrent} id="actual"/>
+							{renderCircleGraph(percentageCurrent, "actual")}
 						</div>
 					</div>
 					<div className="flex-col ">
@@ -62,7 +72,7 @@ export default function Fingerprint() {
 							Huella anterior<br/>{last}Kg CO₂ - {percentageLast}%
 						</p>
 						<div className=" m-auto px-32 pt-0 flex">
-							<CircleGraph  from={"#710808"} to={"#F12C2C" } percentage={percentageLast} id="before"/>
+							{renderCircleGraph(percentageLast, "before")}
 						</div>
 					</div>
 				</div>
