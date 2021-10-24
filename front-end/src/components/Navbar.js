@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
@@ -9,9 +9,21 @@ import dinocoin from '../images/Dinocoin.png';
 
 export default function Navbar() {
     const [showMenu, setShowMenu] = useState(false);
+    const [points, setPoints] = useState(0);
     const history = useHistory();
 	const auth = useAuth();
     
+    useEffect(() => {
+		auth.request("reports/getPoints","POST")
+		.then(res => {
+			console.log(res.data);
+            setPoints(res.data);
+		})
+        .catch((error) =>{
+			console.log(error);
+        });
+	}, [auth])
+
 	const logout = () => {
         auth.signout(()=> history.push("/"));
 	};
@@ -23,6 +35,7 @@ export default function Navbar() {
             </Link>
             <ul className="select-none hidden m-auto w-full pr-10 lg:flex">
                 <div className="mr-0 flex m-auto space-x-10">
+                    <p>{points}</p>
                     <Link>
                         <img src={dinocoin} alt="Dinocoin"/>
                     </Link>
