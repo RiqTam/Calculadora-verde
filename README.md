@@ -1,4 +1,4 @@
-# Calculadora-verde
+# Dinocalculadora - Reto de la Calculadora Verde / Hackathon BBVA 2021
 La Dinocalculadora es un sitio web que con base en tus gastos bimestrales de luz, agua, gas y gasolina te brinda un cálculo de kg CO2 que se emiten de forma directa o indirecta debido a la actividad de tu empresa en dicho periodo de tiempo, lo que te ayuda a reducir tu huella ambiental al mismo tiempo que reduces en gran parte los costos que tienes en los principales servicios.
 
 ![preview](DinocalculadoraPreview.gif)
